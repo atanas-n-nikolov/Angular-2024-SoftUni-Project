@@ -6,12 +6,27 @@
     </fieldset>
     <p>
       <label for="firstname">First name</label>
-      <input type="text" name="username" placeholder="e.g.John">
+      <input type="text" name="username" id="username" placeholder="e.g. John">
     </p>
     <p>
       <label for="lastname">Last name</label>
-      <input type="text" name="lastname" placeholder="e.g.Doe">
+      <input type="text" name="lastname" id="lastname" placeholder="e.g. Doe">
     </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" placeholder="e.g. john@mail.com">
+    </p>
+    <p>
+      <label for="password"></label>
+      <input type="password" name="password" id="password">
+    </p>
+    <p>
+      <label for="rePassword"></label>
+      <input type="rePassword" name="rePassword" id="rePassword">
+    </p>
+    <button>Register</button>
+    <p>Already have an acount?</p>
+    <a routerLink="/users/login">Log in</a>
   </form>
 </section>
 <aside class="register-img">
