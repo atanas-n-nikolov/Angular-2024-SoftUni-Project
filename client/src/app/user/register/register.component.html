@@ -1,34 +1,42 @@
-<section class="register-s">
-  <form action="">
-    <fieldset>
-      <h2>Sign up</h2>
-      <p>Join our community and become part of our mission to create a better future for animals! By registering, you’ll have access to a full range of services.</p>
-    </fieldset>
-    <p>
-      <label for="firstname">First name</label>
-      <input type="text" name="username" id="username" placeholder="e.g. John">
-    </p>
-    <p>
-      <label for="lastname">Last name</label>
-      <input type="text" name="lastname" id="lastname" placeholder="e.g. Doe">
-    </p>
-    <p>
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" placeholder="e.g. john@mail.com">
-    </p>
-    <p>
-      <label for="password"></label>
-      <input type="password" name="password" id="password">
-    </p>
-    <p>
-      <label for="rePassword"></label>
-      <input type="rePassword" name="rePassword" id="rePassword">
-    </p>
-    <button>Register</button>
-    <p>Already have an acount?</p>
-    <a routerLink="/users/login">Log in</a>
-  </form>
-</section>
-<aside class="register-img">
+<main class="form-container">
+  <section class="register-s">
+    <form action="">
+      <fieldset>
+        <h2>Sign up</h2>
+        <p>Join our community and become part of our mission to create a better future for animals! By registering, you’ll have access to a full range of services.</p>
+      </fieldset>
+      <div class="name-container">
+        <p class="name-c">
+          <label for="firstname">First name</label>
+          <input type="text" name="firstname" id="firstname" placeholder="e.g. John">
+        </p>
+        <p class="name-c">
+          <label for="lastname">Last name</label>
+          <input type="text" name="lastname" id="lastname" placeholder="e.g. Doe">
+        </p>
+      </div>
+      <p>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com">
+      </p>
+      <p>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+      </p>
+      <p>
+        <label for="rePassword">Re-password</label>
+        <input type="password" name="rePassword" id="rePassword">
+      </p>
 
-</aside>
+      <!-- Register Button -->
+      <button>Register</button>
+
+      <!-- Link to Login -->
+      <p>Already have an account?</p>
+      <a routerLink="/users/login">Log in</a>
+    </form>
+  </section>
+  <aside class="register-img">
+    <img src="register-dog.png" alt="register-dog">
+  </aside>
+</main>
