@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Animals } from '../types/Animal';
+import { Animals } from '../types/animal'
 import { ApiService } from '../api.service';
 
 @Component({
