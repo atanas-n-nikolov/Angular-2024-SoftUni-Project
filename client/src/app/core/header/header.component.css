@@ -1,0 +1,90 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 352px;
+  background: #FFFFFFB2;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 108px;
+  height: 38px;
+}
+
+.nav-container ul {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container ul li {
+  display: inline-block;
+}
+
+.nav-container ul li a {
+  text-decoration: none;
+  color: #3F3E3E;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  transition: color 0.3s;
+}
+
+.nav-container ul li a:hover {
+  color: #FF7E56;
+}
+
+.action-btn-sign-up:hover {
+  color: #FF7E56;
+  border: 1px solid #FF7E56;
+}
+
+.action-btn-sign-up a.sign-up:hover .user-icon {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(74%) saturate(7281%) hue-rotate(3deg) brightness(100%) contrast(100%);
+}
+
+.nav-container ul li.splitter {
+  color: #3F3E3E;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.user-icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s ease;
+}
+
+.action-btn-sign-up {
+  padding: 8px 16px;
+  border: 1px solid black;
+  border-radius: 40px;
+}
+
+.action-btn-donate {
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid #FF7E56;
+  background-color: #FF7E56;
+}
+
+.nav-container ul li a.donate {
+ color: #ffff;
+}
+
+.action-btn-sign-up a.sign-up, .action-btn-donate a.donate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #333;
+}
