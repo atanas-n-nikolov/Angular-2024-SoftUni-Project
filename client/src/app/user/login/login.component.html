@@ -1,1 +1,24 @@
-<p>login works!</p>
+<main class="form-container">
+  <section class="login-s">
+    <h2>Welcome back!</h2>
+    <p>Please enter your details.</p>
+    <form action="" method="post">
+      <p>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com">
+      </p>
+      <p>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+      </p>
+      <button>Log in</button>
+      <div class="login-a">
+        <p>Don't have an account?</p>
+        <a routerLink="/users/register">Sign up</a>
+      </div>
+    </form>
+  </section>
+  <aside class="login-img">
+    <img src="login-cat.png" alt="login-cat">
+  </aside>
+</main>

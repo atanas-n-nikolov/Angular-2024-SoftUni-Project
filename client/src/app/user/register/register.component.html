@@ -1,10 +1,8 @@
 <main class="form-container">
   <section class="register-s">
-    <form action="">
-      <fieldset>
-        <h2>Sign up</h2>
-        <p>Join our community and become part of our mission to create a better future for animals! By registering, you’ll have access to a full range of services.</p>
-      </fieldset>
+    <h2>Sign up</h2>
+    <p>Join our community and become part of our mission to create a better future for animals! By registering, you’ll have access to a full range of services.</p>
+    <form action="" method="post">
       <div class="name-container">
         <p class="name-c">
           <label for="firstname">First name</label>
@@ -27,13 +25,11 @@
         <label for="rePassword">Re-password</label>
         <input type="password" name="rePassword" id="rePassword">
       </p>
-
-      <!-- Register Button -->
       <button>Register</button>
-
-      <!-- Link to Login -->
-      <p>Already have an account?</p>
-      <a routerLink="/users/login">Log in</a>
+      <div class="login-a">
+        <p>Already have an account?</p>
+        <a routerLink="/users/login">Log in</a>
+      </div>
     </form>
   </section>
   <aside class="register-img">
