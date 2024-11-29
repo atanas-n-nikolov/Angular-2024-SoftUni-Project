@@ -2,15 +2,15 @@
   <section class="login-s">
     <h2>Welcome back!</h2>
     <p>Please enter your details.</p>
-    <form action="" method="post">
-      <p>
+    <form #loginForm="ngForm" (ngSubmit)="loginSubmitHandler()">
+      <div>
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com">
-      </p>
-      <p>
+        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com" ngModel #email="ngModel">
+      </div>
+      <div>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-      </p>
+        <input type="password" name="password" id="password" ngModel #password="ngModel">
+      </div>
       <button>Log in</button>
       <div class="login-a">
         <p>Don't have an account?</p>

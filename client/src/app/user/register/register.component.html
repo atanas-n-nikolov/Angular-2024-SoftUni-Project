@@ -2,29 +2,29 @@
   <section class="register-s">
     <h2>Sign up</h2>
     <p>Join our community and become part of our mission to create a better future for animals! By registering, you’ll have access to a full range of services.</p>
-    <form action="" method="post">
+    <form #registerForm="ngForm" (ngSubmit)="registerSubmitHandler()">
       <div class="name-container">
-        <p class="name-c">
-          <label for="firstname">First name</label>
-          <input type="text" name="firstname" id="firstname" placeholder="e.g. John">
-        </p>
-        <p class="name-c">
-          <label for="lastname">Last name</label>
-          <input type="text" name="lastname" id="lastname" placeholder="e.g. Doe">
-        </p>
+        <div class="name-c">
+          <label for="firstName">First name</label>
+          <input type="text" name="firstName" id="firstName" placeholder="e.g. John" ngModel #firstName="ngModel">
+        </div>
+        <div class="name-c">
+          <label for="lastName">Last name</label>
+          <input type="text" name="lastName" id="lastName" placeholder="e.g. Doe" ngModel #lastName="ngModel">
+        </div>
       </div>
-      <p>
+      <div>
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com">
-      </p>
-      <p>
+        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com" ngModel #email="ngModel">
+      </div>
+      <div>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-      </p>
-      <p>
+        <input type="password" name="password" id="password" ngModel #password="ngModel">
+      </div>
+      <div>
         <label for="rePassword">Re-password</label>
-        <input type="password" name="rePassword" id="rePassword">
-      </p>
+        <input type="password" name="rePassword" id="rePassword" ngModel #rePassword="ngModel">
+      </div>
       <button>Register</button>
       <div class="login-a">
         <p>Already have an account?</p>

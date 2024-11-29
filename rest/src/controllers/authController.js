@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { login, register } from "../services/authService.js";
-import dotenv from 'dotenv';
+import { AUTH_COOKIE_NAME } from '../constants.js'
 // import getErrorMsg from '../utils/errorUtils.js';
 
 const authController = Router();
@@ -8,7 +8,7 @@ const authController = Router();
 authController.post('/register', async (req, res) => {
   try {
     const result = await register(req.body);
-    res.cookie(process.env.AUTH_COOKIE_NAME, result.accessToken, {httpOnly: true, sameSite: 'none'});
+    res.cookie(AUTH_COOKIE_NAME, result.accessToken, {httpOnly: true, sameSite: 'none', secure: true});
     res.json(result);
   } catch (err) {
     res.status(401).json({ message: 'err'})
@@ -20,7 +20,7 @@ authController.post('/login', async (req, res) => {
   
   try {
     const result = await login(userData);
-    res.cookie(process.env.AUTH_COOKIE_NAME, result.accessToken, {httpOnly: true, sameSite: 'none'});
+    res.cookie(AUTH_COOKIE_NAME, result.accessToken, {httpOnly: true, sameSite: 'none', secure: true});
     res.json(result);
   } catch (err) {
     res.status(401).json({message: 'err'});
@@ -28,7 +28,7 @@ authController.post('/login', async (req, res) => {
 });
 
 authController.post('/logout', (req, res) => {
-  res.clearCookie(process.env.AUTH_COOKIE_NAME);
+  res.clearCookie(AUTH_COOKIE_NAME);
   res.end();
 });
 

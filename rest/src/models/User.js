@@ -1,6 +1,6 @@
 import { Schema, Types, model } from 'mongoose';
 import bcrypt from 'bcrypt';
-import 'dotenv';
+import { SALT_ROUNDS } from '../constants.js'
 
 const userSchema = new Schema({
   firstName: {
@@ -37,7 +37,7 @@ const userSchema = new Schema({
 });
 
 userSchema.pre('save', async function () {
-  this.password = await bcrypt.hash(this.password, process.env.SALT_ROUNDS);
+  this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
 });
 
 const User = model('User', userSchema);
