@@ -1,8 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from 'bcrypt';
 import jwt from '../lib/jwt.js';
-import 'dotenv';
-
+import { JWT_SECRET } from '../constants.js'
 export const register = async (userData) => {
   const user = await User.findOne({ email: userData.email });
 
@@ -41,7 +40,7 @@ export const edit = async (userId, userData) => {
     firstName: user.firstName,
   };
 
-  const token = await jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '2h'});
+  const token = await jwt.sign(payload, JWT_SECRET, {expiresIn: '2h'});
 
   return {user, token};
 };
@@ -54,7 +53,7 @@ async function generateToken(user) {
     firstName: user.firstName,
   };
 
-  const token = await jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '2h'});
+  const token = await jwt.sign(payload, JWT_SECRET, {expiresIn: '2h'});
 
   const result = {
     _id: user._id,

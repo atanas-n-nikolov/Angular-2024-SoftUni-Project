@@ -1,5 +1,5 @@
 import jwt from '../lib/jwt.js';
-import dotenv from 'dotenv';
+import { JWT_SECRET, AUTH_COOKIE_NAME } from '../constants.js';
 
 export const authMiddleware = async (req, res, next) => {
   const token = req.cookies[AUTH_COOKIE_NAME];
@@ -9,7 +9,7 @@ export const authMiddleware = async (req, res, next) => {
   };
 
   try {
-    const decodedToken = await jwt.verify(token, process.env.JWT_SECRET);
+    const decodedToken = await jwt.verify(token, JWT_SECRET);
 
     req.user = decodedToken;
     req.isAuthenticated = true;

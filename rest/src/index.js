@@ -2,6 +2,7 @@ import express from 'express'
 import routes from './routes.js';
 import { corsMiddleware } from './middlewares/cors.js';
 import mongoose from 'mongoose';
+import corsMiddleware from 'cors';
 
 const app = express();
 app.use(corsMiddleware);
