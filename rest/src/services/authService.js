@@ -54,13 +54,11 @@ async function generateToken(user) {
   };
 
   const token = await jwt.sign(payload, JWT_SECRET, {expiresIn: '2h'});
-
   const result = {
     _id: user._id,
     email: user.email,
     firstName: user.firstName,
     accessToken: token,
   };
-
   return result;
 };
