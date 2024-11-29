@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Animals {
   _id: string;
   name: string;             
@@ -9,8 +11,10 @@ export interface Animals {
   location: string;         
   image: string;           
   description: string;       
-  owner: string[];         
-  likes: string[];       
+  owner: User;         
+  likes: {
+    user?: User
+  };       
   status: 'Adopt' | 'Lost' | 'Found';
   createdAt: string;         
   updatedAt: string;

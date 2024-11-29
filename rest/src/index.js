@@ -1,13 +1,17 @@
 import express from 'express'
 import routes from './routes.js';
-import { corsMiddleware } from './middlewares/cors.js';
 import mongoose from 'mongoose';
-import corsMiddleware from 'cors';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import { authMiddleware } from './middlewares/authMiddleware.js';
 
 const app = express();
-app.use(corsMiddleware);
+app.use(cors({
+  origin: 'http://localhost:4200', credentials: true
+}));
+app.use(cookieParser);
 app.use(express.json());
-
+app.use(authMiddleware);
 app.use(routes);
 
 try {
