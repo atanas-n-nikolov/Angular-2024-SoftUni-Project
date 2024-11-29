@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { ApiService } from '../../api.service';
 import { User } from '../../types/user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +14,7 @@ import { User } from '../../types/user';
 export class RegisterComponent {
   @ViewChild('registerForm') form: NgForm | undefined;
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   registerSubmitHandler() {
     if(this.form?.invalid) {
@@ -43,13 +43,13 @@ export class RegisterComponent {
 
       const userData = { firstName, lastName, email, password };
       
-      this.apiService.register(userData).subscribe({
+      this.userService.register(userData).subscribe({
         next: (response: User) => {
           console.log('Register successfully');
-          this.router.navigate(['/login'])
+          this.router.navigate(['/home'])
         },
         error: (err) => {
-          console.log(err);
+          console.error('Error registering:', err.error.message || err.message);
         }
       })
   }

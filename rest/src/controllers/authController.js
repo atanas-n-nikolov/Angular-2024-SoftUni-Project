@@ -11,7 +11,7 @@ authController.post('/register', async (req, res) => {
     res.cookie(AUTH_COOKIE_NAME, result.accessToken, {httpOnly: true, sameSite: 'none', secure: true});
     res.json(result);
   } catch (err) {
-    res.status(401).json({ message: 'err'})
+    res.status(401).json({ message: err.message})
   }
 });
 
@@ -20,7 +20,7 @@ authController.post('/login', async (req, res) => {
   
   try {
     const result = await login(userData);
-    res.cookie(AUTH_COOKIE_NAME, result.accessToken, {httpOnly: true, sameSite: 'none', secure: true});
+    res.cookie(AUTH_COOKIE_NAME, result.accessToken, {httpOnly: true, sameSite: 'none', secure: false});
     res.json(result);
   } catch (err) {
     res.status(401).json({message: 'err'});

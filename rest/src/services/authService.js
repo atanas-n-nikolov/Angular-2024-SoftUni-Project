@@ -10,7 +10,7 @@ export const register = async (userData) => {
   };
 
   const newUser = await User.create(userData);
-  const result = generateToken(user);
+  const result = generateToken(newUser);  
   return result;
 };
 
