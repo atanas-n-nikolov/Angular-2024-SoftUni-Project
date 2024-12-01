@@ -1,7 +1,7 @@
 <header class="header">
   <div class="logo-container">
     <a routerLink="/home">
-      <img src="logo.svg" alt="Logo" />
+      <img src="assets/img/logo.svg" alt="Logo" />
     </a>
   </div>
   <nav class="nav-container">
@@ -18,18 +18,18 @@
           routerLink="/users/register"
           class="sign-up"
         >
-          <img src="user-icon.svg" alt="user" class="user-icon" /> Sign up
+          <img src="assets/img/user-icon.svg" alt="user" class="user-icon" /> Sign up
         </a>
         <ng-template #loggedIn>
           <a routerLink="/profile" class="sign-up">
-            <img src="user-icon.svg" alt="user" class="user-icon" />
+            <img src="assets/img/user-icon.svg" alt="user" class="user-icon" />
             <span>{{ userFirstName }}</span>
           </a>
         </ng-template>
       </li>
       <li class="action-btn-donate">
         <a routerLink="/donate" class="donate">
-          <img src="pet-friendly.svg" alt="paw" /> Donate
+          <img src="assets/img/pet-friendly.svg" alt="paw" /> Donate
         </a>
       </li>
     </ul>
