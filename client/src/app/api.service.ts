@@ -31,4 +31,11 @@ export class ApiService {
 
     return this.http.get<Animals[]>(url);
   }
+
+  getLostAndFound() {
+    const {apiUrl} = environment;
+    let url = `${apiUrl}/animals/lostandfound`;
+
+    return this.http.get<Animals[]>(url);
+  }
 }

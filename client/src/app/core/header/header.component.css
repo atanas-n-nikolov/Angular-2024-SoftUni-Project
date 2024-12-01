@@ -3,7 +3,9 @@
   position: relative;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 352px;
+  margin: 0 auto;
+  padding: 16px 0;
+  max-width: 1216px;
   background: #FFFFFFB2;
 }
 

@@ -1,66 +1,72 @@
 <section class="adopt-section">
-  <h3>Adopt</h3>
-  <p>Give a second chance to an animal in need! In our adoption section, you’ll find pets looking for loving families. Every animal deserves a home where they are loved and feel safe.</p>
+  <div class="adopt-header">
+    <h3>Adopt</h3>
+    <p>Give a second chance to an animal in need! In our adoption section, you’ll find pets looking for loving families. Every animal deserves a home where they are loved and feel safe.</p>
+  </div>
+  
   <div class="filter-container">
-    <div class="filter-icon">
-      <img src="filter-icon.svg" alt="Filter Icon" />
+    <div class="filter-wrapper">
+      <div class="filter-icon">
+        <img src="assets/img/filter-alt.svg" alt="Filter Icon" />
+      </div>
+      
+      <div class="filter-options">
+        <div class="filter-option">
+          <select id="animal-type" class="option-type" >
+            <option value="" disabled selected hidden>Type of Animal</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="filter-option">
+          <select id="age" class="option-type">
+            <option value="" disabled selected hidden>Age</option>
+            <option value="puppy">Puppy</option>
+            <option value="adult">Adult</option>
+            <option value="senior">Senior</option>
+          </select>
+        </div>
+        
+        <div class="filter-option">
+          <select id="size" class="option-type">
+            <option value="" disabled selected hidden>Size</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+        
+        <div class="filter-option">
+          <select id="gender" class="option-type">
+            <option value="" disabled selected hidden>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        
+        <div class="filter-option">
+          <select id="special-needs" class="option-type">
+            <option value="" disabled selected hidden>Special Needs</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        
+        <div class="filter-option">
+          <select id="location" class="option-type">
+            <option value="" disabled selected hidden>Location</option>
+            <option value="location1">Location 1</option>
+            <option value="location2">Location 2</option>
+            <option value="location3">Location 3</option>
+          </select>
+        </div>
+        
+      </div>
     </div>
     
-    <div class="filter-options">
-      <div class="filter-option">
-        <label for="animal-type">Type of Animal</label>
-        <select id="animal-type">
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      
-      <div class="filter-option">
-        <label for="age">Age</label>
-        <select id="age">
-          <option value="puppy">Puppy</option>
-          <option value="adult">Adult</option>
-          <option value="senior">Senior</option>
-        </select>
-      </div>
-      
-      <div class="filter-option">
-        <label for="size">Size</label>
-        <select id="size">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
-      </div>
-      
-      <div class="filter-option">
-        <label for="gender">Gender</label>
-        <select id="gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
-      
-      <div class="filter-option">
-        <label for="special-needs">Special Needs</label>
-        <select id="special-needs">
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </div>
-      
-      <div class="filter-option">
-        <label for="location">Location</label>
-        <select id="location">
-          <option value="location1">Location 1</option>
-          <option value="location2">Location 2</option>
-          <option value="location3">Location 3</option>
-        </select>
-      </div>
-      
-      <button class="clear-filter">Clear Filter</button>
-    </div>
+    <button class="clear-filter">Clear Filter</button>
   </div>
   <div class="adopt-animals">
     @for (animal of forAdopt; track $index) {
