@@ -1,0 +1,81 @@
+.lost-section {
+  display: flex;
+  flex-direction: column;
+  max-width: 1216px;
+  margin: 40px auto;
+  margin-bottom: 114px;
+  padding: 0 60px;
+  gap: 32px;
+  box-sizing: border-box;
+}
+
+.lost-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+h3 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 46px;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+}
+
+.filter-container {
+  display: flex;
+  padding: 16px 24px;
+  background-color: #f7f9fb;
+  border-radius: 12px;
+  justify-content: space-between;
+}
+
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.filter-options {
+  display: flex;
+  gap: 16px;
+}
+
+.option-type {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: 1px solid #cdd0db;
+  background-color: #f7f9fb;
+  border-radius: 40px;
+  color: #84868e;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("../../assets/img/down-small.svg") no-repeat;
+  background-position: calc(100% - 8px) center;
+  background-size: 16px;
+  padding-right: 40px;
+  line-height: 22px;
+}
+
+.clear-filter {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color:#84868e;
+}
+
+.lost-animals {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

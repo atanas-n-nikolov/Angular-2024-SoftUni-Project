@@ -1,13 +1,16 @@
 .support-article {
-  max-width: 1920px;
   width: 100%;
-  display: flex;
-  padding: 120px 352px;
-  gap: 24px;
-  flex-direction: column;
-  position: relative;
-  top: 120px;
+  padding: 120px 0;
   background-color: #ff7e56;
+}
+
+.support-article-container {
+  max-width: 1216px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .support-c h5 {
@@ -47,8 +50,25 @@
 }
 
 .end-t {
+  text-decoration: none;
+  position: relative;
   font-size: 20px;
   font-weight: 600;
   line-height: 26px;
+  padding: 24px;
   color: #ffff;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.end-t::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  border: 1px dashed #ffff;
+  pointer-events: none;
 }

@@ -2,14 +2,27 @@
   position: relative;
   display: flex;
   justify-content: center;
-  z-index: 1;
-  margin-top: 10px;
+  z-index: 2;
+  margin-top: 20px;
 }
 
 .hero-image {
   position: relative;
   max-width: 100%;
   height: auto;
+  z-index: 2;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background-size: contain;
+  z-index: 2;
 }
 
 .animal-section-1 {
@@ -18,13 +31,14 @@
   width: 100%;
   position: relative;
   margin: 0 auto;
-  top: -30px;
+  margin-top: -30px;
   padding: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 32px;
   background-color: #f1f1f5;
+  z-index: 1;
 }
 
 .animal-section-2 {
@@ -32,27 +46,24 @@
   border-radius: 12px;
   width: 100%;
   max-width: 1216px;
-  position: relative;
   margin: 0 auto;
+  margin-bottom: 114px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 60px;
 }
 
-
-
 .mission-article {
   display: flex;
-  position: relative;
-  top: 80px;
   max-width: 1216px;
+  margin: 0 auto;
+  margin-top: 114px;
+  margin-bottom: 114px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
   gap: 40px;
-  padding-bottom: 190px;
 }
 
 .main h5,
@@ -115,6 +126,7 @@
 }
 
 .animal-card-blank {
+  text-decoration: none;
   width: 250px;
   height: 250px;
   position: relative;
@@ -136,4 +148,3 @@
   border: 1px dashed #a8aab2;
   pointer-events: none;
 }
-

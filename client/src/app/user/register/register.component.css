@@ -47,6 +47,7 @@ form {
 }
 .name-container {
   display: flex;
+  justify-content: space-between;
   gap: 16px; 
 }
 
@@ -110,7 +111,7 @@ a {
   gap: 4px;
 }
 
-#firstname #lastname {
+#firstName, #lastName {
   padding: 8px 16px;
   gap: 10px;
 }
