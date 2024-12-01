@@ -6,26 +6,77 @@
       <div class="name-container">
         <div class="name-c">
           <label for="firstName">First name</label>
-          <input type="text" name="firstName" id="firstName" placeholder="e.g. John" ngModel #firstName="ngModel">
+          <input type="text" name="firstName" id="firstName" placeholder="e.g. John" ngModel #firstName="ngModel" required minlength="2" maxlength="20">
+          @if(firstName?.touched && firstName?.errors?.['required'] || firstName?.touched && firstName?.errors?.['minlength']) {
+            <div class="error">
+              @if(firstName?.errors?.['required']) {
+                <small >First name is required.</small>
+              }
+              @if(firstName?.errors?.['minlength']) {
+                <small >First name must be at least 2 characters.</small>
+              }
+            </div>
+          }
+          
         </div>
         <div class="name-c">
           <label for="lastName">Last name</label>
-          <input type="text" name="lastName" id="lastName" placeholder="e.g. Doe" ngModel #lastName="ngModel">
+          <input type="text" name="lastName" id="lastName" placeholder="e.g. Doe" ngModel #lastName="ngModel" required minlength="2">
+          @if(lastName?.touched && lastName?.errors?.['required'] || lastName?.touched &&lastName?.errors?.['minlength']) {
+            <div class="error">
+              @if(lastName?.errors?.['required']) {
+                <small >Last name is required.</small>
+              }
+              @if(lastName?.errors?.['minlength']) {
+                <small >Last name must be at least 2 characters.</small>
+              }
+            </div>
+          }
         </div>
       </div>
       <div>
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com" ngModel #email="ngModel">
-      </div>
+        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com" ngModel #email="ngModel" required minlength="5">
+        @if (email?.touched && email?.invalid) {
+          <div class="error">
+            @if(email?.errors?.['required']) {
+              <small>Email is required.</small>
+            }
+            @if(email?.errors?.['minlength']) {
+              <small>Email must be at least 5 characters.</small>
+            }
+          </div>
+        }
+        </div>
       <div>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" ngModel #password="ngModel">
+        <input type="password" name="password" id="password" ngModel #password="ngModel" required minlength="6">
+        @if (password?.touched && password?.invalid) {
+          <div class="error">
+            @if (password?.errors?.['required']) {
+              <small>Password is required.</small>
+            }
+            @if (password?.errors?.['minlength']) {
+              <small>Password must be at least 6 characters.</small>
+            }
+          </div>
+        }
       </div>
       <div>
         <label for="rePassword">Re-password</label>
-        <input type="password" name="rePassword" id="rePassword" ngModel #rePassword="ngModel">
+        <input type="password" name="rePassword" id="rePassword" ngModel #rePassword="ngModel" required [pattern]="password.value">
+        @if (rePassword?.touched && rePassword?.invalid) {
+          <div class="error">
+            @if (rePassword?.errors?.['required']) {
+              <small>Password confirmation is required.</small>
+            }
+            @if (rePassword?.errors?.['pattern']) {
+              <small>Passwords do not match.</small>
+            }
+          </div>
+        }
       </div>
-      <button>Register</button>
+      <button [disabled]="registerForm.invalid">Register</button>
       <div class="login-a">
         <p>Already have an account?</p>
         <a routerLink="/users/login">Log in</a>

@@ -5,11 +5,31 @@
     <form #loginForm="ngForm" (ngSubmit)="loginSubmitHandler()">
       <div>
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com" ngModel #email="ngModel">
+        <input type="text" name="email" id="email" placeholder="e.g. john@mail.com" ngModel #email="ngModel" required minlength="5">
+        @if(email?.touched && email?.invalid){
+          <div class="error">
+            @if(email?.errors?.['required']){
+              <small>Email is required.</small>
+            }
+            @if(email?.errors?.['minlength']){
+              <small>Email must be at least 5 characters.</small>
+            }
+          </div>
+        }
       </div>
       <div>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" ngModel #password="ngModel">
+        <input type="password" name="password" id="password" ngModel #password="ngModel" required minlength="6">
+          @if(password?.touched && password?.invalid) {
+            <div class="error">
+              @if(password?.errors?.['required']){
+                <small>Password is required.</small>
+              }
+              @if(password?.errors?.['minlength']){
+                <small>Password must be at least 6 characters.</small>
+              }
+            </div>
+          }
       </div>
       <button>Log in</button>
       <div class="login-a">
