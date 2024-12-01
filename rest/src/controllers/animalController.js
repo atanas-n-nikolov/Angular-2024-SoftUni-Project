@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { animalById, create, findAll, latestAdopt ,latestLostAndFound } from '../services/animalService.js';
+import { allAdopt, animalById, create, findAll, latestAdopt ,latestLostAndFound } from '../services/animalService.js';
 
 const animalController = Router();
 
@@ -28,6 +28,11 @@ animalController.get('/latestFound', async (req, res) => {
   const animals = await latestLostAndFound();
   res.status(201).json(animals);
 });
+
+animalController.get('/adopt', async (req, res) => {
+  const animals = await allAdopt();
+  res.status(201).json(animals);
+})
 
 animalController.get('/:id', async (req, res) => {
   const id = req.params.id;

@@ -9,8 +9,6 @@ html, body {
   font-family: "Noto Sans", sans-serif;
   font-weight: 500;
   font-style: normal;
-  display: flex;
-  flex-direction: column;
 }
 
 .error {
@@ -18,4 +16,13 @@ html, body {
   font-weight: 400;
   font-size: 1em;
   margin-top: 5px;
+}
+
+.animal-cards-container {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

@@ -1,0 +1,12 @@
+<div class="animal-card">
+  <img class="animal-img" [src]="animal.image" alt="{{ animal.name }}" />
+  <div class="animal-info">
+    <div class="card">
+      <img src="/types/type-{{animal.type.toLocaleLowerCase()}}.svg" alt="type-dog" class="animal-type" />
+      <p>{{ animal.name }}</p>
+    </div>
+    <a [routerLink]="['/animals', animal._id]" class="animal-a"
+      >View<img src="arrow.svg" alt="arrow" class="animal-arrow"
+    /></a>
+  </div>
+</div>

@@ -24,4 +24,11 @@ export class ApiService {
 
     return this.http.get<Animals[]>(url)
   };
+
+  getAdopt() {
+    const {apiUrl} = environment;
+    let url = `${apiUrl}/animals/adopt`;
+
+    return this.http.get<Animals[]>(url);
+  }
 }
