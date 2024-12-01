@@ -125,10 +125,3 @@ aside {
   align-items: center;
   justify-content: center;
 }
-
-.error {
-  color: red;
-  font-weight: 400;
-  font-size: 1em;
-  margin-top: 5px;
-}

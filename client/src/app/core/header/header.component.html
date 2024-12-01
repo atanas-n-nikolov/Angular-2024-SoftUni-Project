@@ -7,17 +7,17 @@
   <div class="nav-container">
     <ul>
       <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/adopt">Adopt</a></li>
-      <li><a routerLink="/lostandfound">Lost & Found</a></li>
-      <li><a routerLink="/aboutus">About Us</a></li>
-      <li><a routerLink="/contactus">Contact Us</a></li>
+      <li><a routerLink="animals/adopt">Adopt</a></li>
+      <li><a routerLink="animals/lostandfound">Lost & Found</a></li>
+      <li><a routerLink="/about">About Us</a></li>
+      <li><a routerLink="/contact">Contact Us</a></li>
       <li class="splitter">|</li>
       <li class="action-btn-sign-up">
         <a *ngIf="!userFirstName; else loggedIn" routerLink="/users/register" class="sign-up">
           <img src="user-icon.svg" alt="user" class="user-icon"> Sign up
         </a>
         <ng-template #loggedIn>
-          <a routerLink="/home" class="sign-up">
+          <a routerLink="/register" class="sign-up">
             <img src="user-icon.svg" alt="user" class="user-icon"> 
             <span>{{ userFirstName }}</span>
           </a>

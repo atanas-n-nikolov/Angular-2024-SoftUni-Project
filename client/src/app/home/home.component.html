@@ -3,69 +3,88 @@
 </section>
 
 <section class="animal-section-1">
-
-@for (animal of forAdopt; track $index) {
+  @for (animal of forAdopt; track $index) {
   <div class="animal-card">
-    <img class="animal-img" [src]="animal.image" alt="{{animal.name}}">
+    <img class="animal-img" [src]="animal.image" alt="{{ animal.name }}" />
     <div class="animal-info">
       <div class="card">
-        <img src="/types/type-dog.svg" alt="type-dog" class="animal-type">
-        <p>{{animal.name}}</p>
+        <img src="/types/type-dog.svg" alt="type-dog" class="animal-type" />
+        <p>{{ animal.name }}</p>
       </div>
-      <a [href]="animal._id" class="animal-a">View<img src="arrow.svg" alt="arrow" class="animal-arrow"></a>
+      <a [href]="animal._id" class="animal-a"
+        >View<img src="arrow.svg" alt="arrow" class="animal-arrow"
+      /></a>
     </div>
   </div>
-}
+  }
 
-<div class="animal-card-blank">
-  <div class="animal-blank">
-    <img src="pet-friendly-grey.svg" alt="" class="animal-grey">
-    <p>
-      <span class="line">View</span>
-      <span class="line">all animals</span>
-    </p>
+  <div class="animal-card-blank">
+    <div class="animal-blank">
+      <img src="pet-friendly-grey.svg" alt="" class="animal-grey" />
+      <p>
+        <span class="line">View</span>
+        <span class="line">all animals</span>
+      </p>
+    </div>
   </div>
-</div>
-    
-  
 </section>
 
 <article class="mission-article">
-<div class="main">
-  <h5>Our mission</h5>
-  <br>
-  <p class="mission-p">Our mission is to give every animal a chance for a better life, filled with care and love. We believe that every creature deserves a safe home and attention, regardless of its past. We work tirelessly to rescue animals in need, rehabilitate them, and find loving families that will welcome them as part of their lives.</p>
-  <p class="mission-p">We strive to inspire the community to be more compassionate and responsible toward animals by organizing awareness campaigns and educational initiatives. Our foundation also supports spay and neuter programs to help prevent unwanted litters and reduce homelessness.</p>
-  <div class="article-end">
-    <img src="heart.svg" alt="">
-    <p>We believe that, together we can build a world where every animal lives in peace and dignity.</p>
+  <div class="main">
+    <h5>Our mission</h5>
+    <br />
+    <p class="mission-p">
+      Our mission is to give every animal a chance for a better life, filled
+      with care and love. We believe that every creature deserves a safe home
+      and attention, regardless of its past. We work tirelessly to rescue
+      animals in need, rehabilitate them, and find loving families that will
+      welcome them as part of their lives.
+    </p>
+    <p class="mission-p">
+      We strive to inspire the community to be more compassionate and
+      responsible toward animals by organizing awareness campaigns and
+      educational initiatives. Our foundation also supports spay and neuter
+      programs to help prevent unwanted litters and reduce homelessness.
+    </p>
+    <div class="article-end">
+      <img src="heart.svg" alt="" />
+      <p>
+        We believe that, together we can build a world where every animal lives
+        in peace and dignity.
+      </p>
+    </div>
   </div>
-</div>
-<div class="puppy-adopt">
-  <img src="mission-banner.png" alt="">
-</div>
+  <div class="puppy-adopt">
+    <img src="mission-banner.png" alt="" />
+  </div>
 </article>
 
 <section class="animal-section-2">
-<h5>Lost & Found</h5>
-<p class="mission-p">If you’ve lost your pet or found a stray animal, we’re here to help. Our goal is to reconnect lost animals with their families as quickly and safely as possible.</p>
+  <h5>Lost & Found</h5>
+  <p class="mission-p">
+    If you’ve lost your pet or found a stray animal, we’re here to help. Our
+    goal is to reconnect lost animals with their families as quickly and safely
+    as possible.
+  </p>
   <div class="animal-cards-container">
     @for (animal of foundAndLost; track $index) {
-      <div class="animal-card">
-          <a href="" class="animal-footer">{{animal.status}}</a>
-        <img class="animal-img" [src]="animal.image" alt="{{animal.name}}">
-        <div class="animal-info">
-          <div class="card">
-            <img src="/types/type-dog.svg" alt="type-dog" class="animal-type">
-            <p>{{animal.name}}</p>
-          </div>
-          <a [href]="animal._id" class="animal-a">View<img src="arrow.svg" alt="arrow" class="animal-arrow"></a>
+    <div class="animal-card">
+      <a href="" class="animal-footer">{{ animal.status }}</a>
+      <img class="animal-img" [src]="animal.image" alt="{{ animal.name }}" />
+      <div class="animal-info">
+        <div class="card">
+          <img src="/types/type-dog.svg" alt="type-dog" class="animal-type" />
+          <p>{{ animal.name }}</p>
         </div>
+        <a [href]="animal._id" class="animal-a"
+          >View<img src="arrow.svg" alt="arrow" class="animal-arrow"
+        /></a>
       </div>
+    </div>
     }
     <div class="animal-card-blank">
       <div class="animal-blank">
-        <img src="pet-friendly-grey.svg" alt="" class="animal-grey">
+        <img src="pet-friendly-grey.svg" alt="" class="animal-grey" />
         <p>
           <span class="line">View</span>
           <span class="line">all animals</span>
@@ -73,18 +92,5 @@
       </div>
     </div>
   </div>
-
 </section>
-
-<article class="support-article">
-<div class="support-c">
-  <h5>Support us with a Donation</h5>
-  <a href="" class="donate-w"><img src="orange-paw.svg" alt="paw" class="paw-w">Donate</a>
-</div>
-<div class="support-t">
-  <p>With your help, we can change the lives of even more animals in need! Every dollar donated supports our efforts to provide medical care, food, shelter, and love to abandoned and homeless animals. Your support not only saves lives but also gives a fresh start to those who need it most.</p>
-</div>
-<div class="end-t">
-  <p>Even the smallest donation can make a big difference. Together, we can build a world where every animal finds security, love, and a home. Support us today and help us give each animal hope and a future. Thank you for being a part of our mission!</p>
-</div>
-</article>
+<app-support-article/>
