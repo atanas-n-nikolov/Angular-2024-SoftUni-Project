@@ -1,12 +1,15 @@
 .header {
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   padding: 16px 0;
   max-width: 1216px;
-  background: #FFFFFFB2;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 .logo-container {

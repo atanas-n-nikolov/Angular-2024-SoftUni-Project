@@ -50,13 +50,12 @@ p {
 .option-type {
   display: flex;
   justify-content: space-between;
+  appearance: none;
   font-size: 14px;
   padding: 8px 16px;
   border: 1px solid #cdd0db;
-  background-color: #f7f9fb;
   border-radius: 40px;
   color: #84868e;
-  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: url("../../assets/img/down-small.svg") no-repeat;
