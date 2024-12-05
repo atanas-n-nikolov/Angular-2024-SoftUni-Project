@@ -11,13 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit{
-  userFirstName: string | undefined;
+  firstName: string | undefined;
 
- constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {}
 
- ngOnInit(): void {
-   this.userService.user$.subscribe((user) => {
-    this.userFirstName = user?.firstName;
-   })
- }
+  ngOnInit(): void {
+    this.userService.user$.subscribe(user => {
+      this.firstName = user?.firstName;
+    })
+  }
 }

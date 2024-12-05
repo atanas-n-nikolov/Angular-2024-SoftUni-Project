@@ -2,12 +2,13 @@ import User from "../models/User.js";
 import bcrypt from 'bcrypt';
 import jwt from '../lib/jwt.js';
 import { JWT_SECRET } from '../constants.js'
+
 export const register = async (userData) => {
   const user = await User.findOne({ email: userData.email });
 
   if(user) {
     throw new Error('This email address is already used.');
-  };
+  };  
 
   const newUser = await User.create(userData);
   const result = generateToken(newUser);  
@@ -45,6 +46,10 @@ export const edit = async (userId, userData) => {
   return {user, token};
 };
 
+export const getInfo = async (userId) => {
+  const user = await User.findById(userId).populate('created').populate('liked');
+  return user;
+}
 
 async function generateToken(user) {
   const payload = {

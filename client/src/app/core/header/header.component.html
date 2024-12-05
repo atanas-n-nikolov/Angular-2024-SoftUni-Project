@@ -13,19 +13,19 @@
       <li><a routerLink="/contact">Contact Us</a></li>
       <li class="splitter">|</li>
       <li class="action-btn-sign-up">
-        <a
-          *ngIf="!userFirstName; else loggedIn"
-          routerLink="/users/register"
-          class="sign-up"
-        >
-          <img src="assets/img/user-icon.svg" alt="user" class="user-icon" /> Sign up
-        </a>
-        <ng-template #loggedIn>
+        @if(!firstName) {
+          <a routerLink="users/register">
+            <img src="assets/img/user-icon.svg" alt="user" class="user-icon" /> Sign up
+          </a> 
+        }@else {
           <a routerLink="/profile" class="sign-up">
             <img src="assets/img/user-icon.svg" alt="user" class="user-icon" />
-            <span>{{ userFirstName }}</span>
+            <span>{{ firstName }}</span>
           </a>
-        </ng-template>
+        }
+
+        
+          
       </li>
       <li class="action-btn-donate">
         <a routerLink="/donate" class="donate">

@@ -29,28 +29,9 @@ export class RegisterComponent {
       password,
       rePassword
     } = this.form?.value;
-
-    console.log(firstName,
-      lastName,
-      email,
-      password,
-      rePassword);
-
-      if(password !== rePassword) {
-        console.log('Password missmatch!');
-        return;
-      };
-
-      const userData = { firstName, lastName, email, password };
       
-      this.userService.register(userData).subscribe({
-        next: (response: User) => {
-          console.log('Register successfully');
-          this.router.navigate(['/home'])
-        },
-        error: (err) => {
-          console.error('Error registering:', err.error.message || err.message);
-        }
+      this.userService.register(firstName, lastName, email, password).subscribe(() => {
+        this.router.navigate(['/home'])
       })
   }
 }

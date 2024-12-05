@@ -13,9 +13,8 @@ export const authMiddleware = async (req, res, next) => {
 
     req.user = decodedToken;
     req.isAuthenticated = true;
-    res.locals.user = decodedToken;
-    res.locals.isAuthenticated = true;
-    
+    // res.locals.user = decodedToken;
+    // res.locals.isAuthenticated = true;
     next();
   } catch (error) {
     res.clearCookie(AUTH_COOKIE_NAME);

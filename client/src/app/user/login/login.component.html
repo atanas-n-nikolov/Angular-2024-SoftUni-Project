@@ -2,7 +2,7 @@
   <section class="login-s">
     <h2>Welcome back!</h2>
     <p>Please enter your details.</p>
-    <form #loginForm="ngForm" (ngSubmit)="loginSubmitHandler()">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <div>
         <label for="email">Email</label>
         <input type="text" name="email" id="email" placeholder="e.g. john@mail.com" ngModel #email="ngModel" required minlength="5">

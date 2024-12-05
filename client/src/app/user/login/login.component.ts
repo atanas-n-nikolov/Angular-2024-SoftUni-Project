@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,18 +11,19 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  @ViewChild('loginForm') form: NgForm | undefined;
+  
+  constructor(private userService: UserService, private router: Router) {}
 
-  loginSubmitHandler() {
-    if(this.form?.invalid) {
-      console.log('Login form is invalid');
+  login(form: NgForm) {
+    if(form.invalid) {
+      console.error('Invalid Login Form!');
       return;
     };
 
-    const {
-      email,
-      password
-    } = this.form?.value;
+    const { email, password } = form.value;
+    console.log(form.value);
+    this.userService.login( email, password ).subscribe(()=> {
+      this.router.navigate(['/home']);
+    })
   }
-
 }
