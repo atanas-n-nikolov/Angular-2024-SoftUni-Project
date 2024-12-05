@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Subscription, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../types/user';
 
@@ -44,10 +44,13 @@ export class UserService implements OnDestroy {
   }
 
   loadProfile() {
-    this.http.get<User>('/api/users/profile').subscribe({
-      next: (user) => this.user$$.next(user),
-      error: () => this.user$$.next(undefined),
-    });
+    return this.http.get<User>('/api/users/profile').pipe(
+      tap(user => this.user$$.next(user))
+    );
+  }
+
+  updateProfile(firstName: string, lastName: string, email: string, userId: string) {
+    return this.http.put<User>(`/api/users/profile/${userId}`, {firstName, lastName, email}, {withCredentials: true}).pipe(tap(user => this.user$$.next(user)))
   }
 
   ngOnDestroy(): void {

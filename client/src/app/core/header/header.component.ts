@@ -12,12 +12,14 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements OnInit{
   firstName: string | undefined;
+  userId: string | undefined;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.user$.subscribe(user => {
-      this.firstName = user?.firstName;
+    this.userService.loadProfile().subscribe((data) => {
+      this.firstName = data.firstName
+      this.userId = data._id
     })
   }
 }
