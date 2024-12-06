@@ -12,19 +12,20 @@ export const authMiddleware = async (req, res, next) => {
     const decodedToken = await jwt.verify(token, JWT_SECRET);
 
     req.user = decodedToken;
-    req.isAuthenticated = true;
-    // res.locals.user = decodedToken;
-    // res.locals.isAuthenticated = true;
+    res.locals.user = decodedToken;
+    res.locals.isAuthenticated = true;
     next();
   } catch (error) {
     res.clearCookie(AUTH_COOKIE_NAME);
-    res.redirect('/auth/login');
+    res.redirect('/users/login');
   };
 };
 
 export const isAuth = async (req, res, next) => {
   if(!req.user) {
-    return res.redirect('/');
+    console.log('User is not authenticated');
+    res.status(401).send({message: 'Invalid token!'});
+    return;
   };
 
   next();

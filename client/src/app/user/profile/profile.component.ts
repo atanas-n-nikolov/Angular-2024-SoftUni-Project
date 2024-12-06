@@ -19,6 +19,10 @@ export class ProfileComponent implements OnInit{
 
   constructor(private route: ActivatedRoute, private userService: UserService) {};
 
+  ngOnInit(): void {
+    
+}
+
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
   };
@@ -27,8 +31,6 @@ export class ProfileComponent implements OnInit{
     if(this.form?.invalid) {
       return;
     };
-
-    console.log(this.form?.value);
 
     const {
       firstName,
@@ -40,14 +42,6 @@ export class ProfileComponent implements OnInit{
       return;
     }
 
-    this.userService.updateProfile(firstName, lastName, email, this.user?._id).subscribe((updateUser) => {
-      this.user = updateUser;
-    })
   }
 
-  ngOnInit(): void {
-    this.userService.loadProfile().subscribe((data) => {
-      this.user = data;  
-    })
   }
-}

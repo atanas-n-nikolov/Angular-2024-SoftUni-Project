@@ -36,17 +36,18 @@
         <div class="profile-container">
           <div class="profile-first-name">
             <label for="firstName">First name</label>
-            <input type="text" name="firstName" id="firstName" [placeholder]="user?.firstName" ngModel #firstName="ngModel" required minlength="2" maxlength="20">
+            <input type="text" name="firstName" id="firstName" [ngModel]="user?.firstName" ngModel #firstName="ngModel" required minlength="2" maxlength="20">
           </div>
           <div class="profile-last-name">
             <label for="lastName">Last name</label>
-            <input type="text" name="lastName" id="lastName" [placeholder]="user?.lastName" ngModel #lastName="ngModel" required minlength="2" maxlength="20">
+            <input type="text" name="lastName" id="lastName" [ngModel]="user?.lastName" ngModel #lastName="ngModel" required minlength="2" maxlength="20">
           </div>
           <div class="profile-email">
             <label for="email">Email</label>
-            <input type="text" name="email" id="email" [placeholder]="user?.email" ngModel #email="ngModel" required minlength="5">
+            <input type="text" name="email" id="email" [ngModel]="user?.email" ngModel #email="ngModel" required minlength="5">
           </div>
-          <button >Save</button>
+          <button type="submit">Save</button>
+          <button type="button" (click)="toggleEditMode()">Cancel</button>
         </div>
       </form>
     }

@@ -47,7 +47,7 @@ export const edit = async (userId, userData) => {
 };
 
 export const getInfo = async (userId) => {
-  const user = await User.findById(userId).populate('created').populate('liked');
+  const user = await User.findById({ _id: userId }, { password: 0, __v: 0 }).populate('created').populate('liked');
   return user;
 }
 

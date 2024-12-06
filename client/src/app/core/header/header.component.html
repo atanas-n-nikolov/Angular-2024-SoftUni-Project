@@ -18,10 +18,12 @@
             <img src="assets/img/user-icon.svg" alt="user" class="user-icon" /> Sign up
           </a> 
         }@else {
-          <a [routerLink]="['/profile', userId]" class="sign-up">
+          <a [routerLink]="['users/profile']" class="sign-up">
             <img src="assets/img/user-icon.svg" alt="user" class="user-icon" />
             <span>{{ firstName }}</span>
           </a>
+          <a (click)="logout()">Logout</a>
+
         }
 
         
