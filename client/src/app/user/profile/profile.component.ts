@@ -20,7 +20,9 @@ export class ProfileComponent implements OnInit{
   constructor(private route: ActivatedRoute, private userService: UserService) {};
 
   ngOnInit(): void {
-    
+  this.userService.getProfile().subscribe((user) => {
+    this.user = user;
+  });
 }
 
   toggleEditMode() {

@@ -28,7 +28,7 @@
             <label for="email">Email</label>
             <p id="user-data">{{user?.email}}</p>
           </div>
-          <button (click)="toggleEditMode()">Edit</button>
+          <button class="edit-btn" (click)="toggleEditMode()">Edit</button>
         </div>
       </div>
     }@else {
@@ -46,8 +46,10 @@
             <label for="email">Email</label>
             <input type="text" name="email" id="email" [ngModel]="user?.email" ngModel #email="ngModel" required minlength="5">
           </div>
-          <button type="submit">Save</button>
-          <button type="button" (click)="toggleEditMode()">Cancel</button>
+          <div class="form-btn">
+            <button class="cancel-btn" type="button" (click)="toggleEditMode()">Cancel</button>
+            <button class="save-btn" type="submit">Save</button>
+          </div>
         </div>
       </form>
     }

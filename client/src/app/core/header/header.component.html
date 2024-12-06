@@ -18,16 +18,17 @@
             <img src="assets/img/user-icon.svg" alt="user" class="user-icon" /> Sign up
           </a> 
         }@else {
-          <a [routerLink]="['users/profile']" class="sign-up">
-            <img src="assets/img/user-icon.svg" alt="user" class="user-icon" />
-            <span>{{ firstName }}</span>
-          </a>
-          <a (click)="logout()">Logout</a>
-
-        }
-
-        
-          
+          <div class="dropdown">
+            <a [routerLink]="['users/profile']" class="user-link">
+              <img src="assets/img/user-icon.svg" alt="user" class="user-icon" />
+              <span>{{ firstName }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a routerLink="animals/create">Create</a></li>
+              <li><a (click)="logout()" class="user-link">Logout</a></li>
+            </ul>
+          </div>
+        } 
       </li>
       <li class="action-btn-donate">
         <a routerLink="/donate" class="donate">

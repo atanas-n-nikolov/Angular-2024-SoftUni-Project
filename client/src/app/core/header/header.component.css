@@ -22,7 +22,7 @@
   height: 38px;
 }
 
-.nav-container ul {
+.nav-links {
   display: flex;
   gap: 32px;
   list-style: none;
@@ -74,6 +74,7 @@
   padding: 8px 16px;
   border: 1px solid black;
   border-radius: 40px;
+  position: relative;
 }
 
 .action-btn-donate {
@@ -93,4 +94,60 @@
   gap: 8px;
   text-decoration: none;
   color: #333;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+ .user-link {
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #3F3E3E;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  z-index: 1000;
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 15px;
+  color: #3F3E3E;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  color: #FF7E56;
+}
+
+.action-btn-sign-up:hover .dropdown-menu {
+  display: flex;
 }
