@@ -33,4 +33,8 @@ export class ApiService {
 
     return this.http.get<Animals[]>(url);
   }
+
+  getAnimal(id: string) {
+    return this.http.get<Animals>(`/api/animals/${id}/details`)
+  }
 }

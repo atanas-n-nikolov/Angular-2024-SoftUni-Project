@@ -39,7 +39,13 @@ export class UserService {
   }
 
   getProfile() {
-    return this.http.get<User>('/api/users/profile').pipe(tap((user) => this.user$$.next(user)));
+    return this.http.get<User>('/api/users/profile', { withCredentials: true }).pipe(tap((user) => this.user$$.next(user)));
   };
+
+  updateProfile(firstName: string, lastName: string, email: string) {
+    return this.http.put<User>('/api/users/profile', {firstName, lastName, email}, { withCredentials: true }).pipe(tap((user) => {
+      this.user$$.next(user);
+    }))
+  }
 
 }

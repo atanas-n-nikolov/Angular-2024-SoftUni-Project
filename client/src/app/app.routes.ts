@@ -9,6 +9,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DonateComponent } from './donate/donate.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { AddAnimalComponent } from './add-animal/add-animal.component';
+import { DetailsComponent } from './shared/details/details.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -19,6 +20,7 @@ export const routes: Routes = [
   {path: 'animals/adopt', component: AdoptComponent},
   {path: 'animals/lostandfound', component: LostFoundComponent},
   {path: 'animals/create', component: AddAnimalComponent},
+  {path: 'animals/:id/details', component: DetailsComponent},
   {path: 'about', component: AboutUsComponent},
   {path: 'contact', component: ContactUsComponent},
   {path: 'donate', component: DonateComponent},

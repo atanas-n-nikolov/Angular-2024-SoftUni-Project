@@ -6,7 +6,10 @@ import cookieParser from 'cookie-parser';
 import { authMiddleware } from './middlewares/authMiddleware.js';
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+const corsOptions = {
+  origin: 'http://localhost:4200', credentials: true 
+}
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use(authMiddleware);

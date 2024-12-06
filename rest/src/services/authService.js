@@ -42,7 +42,6 @@ export const edit = async (userId, userData) => {
   };
 
   const token = await jwt.sign(payload, JWT_SECRET, {expiresIn: '2h'});
-
   return {user, token};
 };
 

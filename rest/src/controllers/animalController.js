@@ -39,7 +39,7 @@ animalController.get('/lostandfound', async (req, res) => {
   res.status(201).json(animals);
 })
 
-animalController.get('/:id', async (req, res) => {
+animalController.get('/:id/details', async (req, res) => {
   const id = req.params.id;
   console.log(id);
   const animal = await animalById(id);

@@ -40,10 +40,12 @@ export class ProfileComponent implements OnInit{
       email
     } = this.form?.value;
 
-    if(!this.user?._id) {
-      return;
-    }
-
+    this.userService.updateProfile(firstName, lastName, email).subscribe(() => {
+      this.userService.getProfile().subscribe((user) => {
+        this.user = user;
+        this.toggleEditMode();
+      })
+    });
   }
 
   }

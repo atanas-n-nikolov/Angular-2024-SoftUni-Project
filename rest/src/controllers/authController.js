@@ -41,14 +41,15 @@ authController.get('/profile', isAuth, async (req, res) => {
   }
 })
 
-authController.put('/profile/:id', isAuth, async (req, res) => {
+authController.put('/profile', isAuth, async (req, res) => {
   const id = req.user?._id;
   const userData = req.body;
 
   try {
-    const {user, accessToken} = await edit(id, userData);
+    const {user, token: accessToken} = await edit(id, userData);
+    
     res.cookie(AUTH_COOKIE_NAME, accessToken, {httpOnly: true, sameSite: 'none', secure: true});
-    res.json({user, accessToken});
+    res.status(200).json(user);
   } catch (err) {
     const error = getErrorMsg(err);
     res.status(401).json(error)

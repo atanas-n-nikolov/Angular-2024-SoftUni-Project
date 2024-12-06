@@ -7,7 +7,7 @@
         <img src="assets/types/type-{{animal.type.toLocaleLowerCase()}}.svg" alt="type-dog" class="animal-type" />
         <p>{{ animal.name }}</p>
       </div>
-      <a [routerLink]="['/animals', animal._id]" class="animal-a"
+      <a [routerLink]="['/animals', animal._id, 'details']" class="animal-a"
         >View<img src="assets/img/arrow.svg" alt="arrow" class="animal-arrow"
       /></a>
     </div>
@@ -17,7 +17,7 @@
         <img src="assets/types/type-{{animal.type.toLocaleLowerCase()}}.svg" alt="type-dog" class="animal-type" />
         <p>{{ animal.name }}</p>
       </div>
-      <a [routerLink]="['/animals', animal._id]" class="animal-a"
+      <a [routerLink]="['/animals', animal._id, 'details']" class="animal-a"
         >View<img src="assets/img/arrow.svg" alt="arrow" class="animal-arrow"
       /></a>
     </div>

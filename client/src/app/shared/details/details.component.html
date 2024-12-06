@@ -1,0 +1,36 @@
+<main class="details-container">
+  <header>
+    <h1>Welcome to the Animal Details Page</h1>
+    <p>Here you can find more information about this animal. Whether you're considering adopting, helping, or just curious, we're happy to provide all the details!</p>
+  </header>
+  @if(animal) {
+  <section class="animal-details">
+    <article class="animal-info">
+      <div class="animal-details-left">
+        <h2>{{ animal.name }}</h2>
+        <div class="animal-data">
+        <p>Status: {{ animal.status }}</p>
+        <p>Type: {{ animal.type }}</p>
+        <p>Age: {{ animal.age }}</p>
+        <p>Size: {{ animal.size }}</p>
+        <p>Gender: {{ animal.gender }}</p>
+        <p>Special Needs: {{ animal.specialNeeds ? 'Yes' : 'No' }}</p>
+        <p>Location: {{ animal.location }}</p>
+        </div>
+        <section class="animal-description">
+          <h3>Description:</h3>
+          <p>{{ animal.description }}</p>
+        </section>
+      </div>
+      <div class="animal-image-right">
+        <img [src]="animal.image" alt="Image of {{ animal.name }}" />
+      </div>
+    </article>
+  </section>
+  }
+
+</main>
+
+<footer>
+  <p>Thank you for visiting! If you are interested in adopting or learning more, feel free to contact us!</p>
+</footer>
