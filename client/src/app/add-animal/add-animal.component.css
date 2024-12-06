@@ -1,0 +1,44 @@
+.create-s {
+    display: flex;
+    flex-direction: column;
+    max-width: 1216px;
+    margin: 40px auto;
+    margin-bottom: 114px;
+    padding: 0 60px;
+    gap: 32px;
+    box-sizing: border-box;
+}
+
+section {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+section h2 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 46px;
+}
+
+section p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3F3E3E;
+}
+
+form {
+  border-top: 4px solid #FF7E56;
+  border-radius: 12px;
+  padding: 32px;
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 600px;
+  max-height: 698px;
+  box-shadow: 0px 2px 21px 0px #7680A126;
+  display: flex;
+  flex-direction: column;
+}

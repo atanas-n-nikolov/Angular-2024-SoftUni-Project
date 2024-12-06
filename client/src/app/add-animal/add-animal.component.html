@@ -1,0 +1,75 @@
+  <section class="create-s">
+    <h2>Welcome to the Animal Creation Form!</h2>
+    <p>This form allows you to add an animal that is either available for adoption, has been found, or is lost. Please fill out the details of the animal and select the appropriate status. By providing clear information, you'll help us connect animals with loving homes or reunite lost pets with their families. Thank you for helping make a difference!</p>
+    <form>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+          <option value="adopt">Adopt</option>
+          <option value="lost">Lost</option>
+          <option value="found">Found</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <select id="age" name="age" required>
+          <option value="young">Young</option>
+          <option value="adult">Adult</option>
+          <option value="senior">Senior</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="size">Size:</label>
+        <select id="size" name="size" required>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="special-needs">Special Needs:</label>
+        <select id="special-needs" name="special-needs" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+      </div>
+    
+      <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input type="text" id="image" name="image">
+      </div>
+    
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+      </div>
+    
+      <button type="submit">Submit</button>
+    </form>
+    
+  </section>
