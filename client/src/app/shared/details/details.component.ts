@@ -25,6 +25,10 @@ export class DetailsComponent implements OnInit {
     private userService: UserService
   ) {}
 
+  editAnimal(id: string) {
+    this.router.navigate([`/animals/${id}/edit`]);
+  }
+
   toggleLike(): void {}
 
   ngOnInit(): void {

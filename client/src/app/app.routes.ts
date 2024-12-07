@@ -10,6 +10,7 @@ import { DonateComponent } from './donate/donate.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { AddAnimalComponent } from './add-animal/add-animal.component';
 import { DetailsComponent } from './shared/details/details.component';
+import { EditComponent } from './user/edit/edit.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -21,6 +22,7 @@ export const routes: Routes = [
   {path: 'animals/lostandfound', component: LostFoundComponent},
   {path: 'animals/create', component: AddAnimalComponent},
   {path: 'animals/:id/details', component: DetailsComponent},
+  {path: 'animals/:id/edit', component: EditComponent},
   {path: 'about', component: AboutUsComponent},
   {path: 'contact', component: ContactUsComponent},
   {path: 'donate', component: DonateComponent},

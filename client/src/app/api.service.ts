@@ -45,4 +45,8 @@ export class ApiService {
   addLike(animalId: string, userId: string) {
     return this.http.post(`/api/animals/${animalId}/like`, {body: {userId}})
   }
+
+  updateAnimal(id: string, data: any) {
+    return this.http.put(`/api/animals/${id}/edit`, data, {withCredentials: true})
+  }
 }

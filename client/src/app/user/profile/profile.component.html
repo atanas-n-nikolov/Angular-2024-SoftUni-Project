@@ -10,75 +10,105 @@
     </p>
   </div>
 
-  
   <div class="profile-info">
     @if(!isEditMode) {
-      <div class="profile-form">
-        <div class="profile-container">
-          <div class="profile-first-name">
-            <label for="firstName">First name</label>
-            <p id="user-data">{{user?.firstName}}</p>
-          </div>
-          <div class="profile-last-name">
-            <label for="lastName">Last name</label>
-            <p id="user-data">{{user?.lastName}}</p>
-    
-          </div>
-          <div class="profile-email">
-            <label for="email">Email</label>
-            <p id="user-data">{{user?.email}}</p>
-          </div>
-          <button class="edit-btn" (click)="toggleEditMode()">Edit</button>
+    <div class="profile-form">
+      <div class="profile-container">
+        <div class="profile-first-name">
+          <label for="firstName">First name</label>
+          <p id="user-data">{{ user?.firstName }}</p>
+        </div>
+        <div class="profile-last-name">
+          <label for="lastName">Last name</label>
+          <p id="user-data">{{ user?.lastName }}</p>
+        </div>
+        <div class="profile-email">
+          <label for="email">Email</label>
+          <p id="user-data">{{ user?.email }}</p>
+        </div>
+        <button class="edit-btn" (click)="toggleEditMode()">Edit</button>
+      </div>
+    </div>
+    }@else {
+    <form class="profile-form" #profileForm="ngForm" (ngSubmit)="profileEdit()">
+      <div class="profile-container">
+        <div class="profile-first-name">
+          <label for="firstName">First name</label>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            [ngModel]="user?.firstName"
+            ngModel
+            #firstName="ngModel"
+            required
+            minlength="2"
+            maxlength="20"
+          />
+        </div>
+        <div class="profile-last-name">
+          <label for="lastName">Last name</label>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            [ngModel]="user?.lastName"
+            ngModel
+            #lastName="ngModel"
+            required
+            minlength="2"
+            maxlength="20"
+          />
+        </div>
+        <div class="profile-email">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            [ngModel]="user?.email"
+            ngModel
+            #email="ngModel"
+            required
+            minlength="5"
+          />
+        </div>
+        <div class="form-btn">
+          <button class="cancel-btn" type="button" (click)="toggleEditMode()">
+            Cancel
+          </button>
+          <button class="save-btn" type="submit">Save</button>
         </div>
       </div>
-    }@else {
-      <form class="profile-form" #profileForm="ngForm" (ngSubmit)="profileEdit()">
-        <div class="profile-container">
-          <div class="profile-first-name">
-            <label for="firstName">First name</label>
-            <input type="text" name="firstName" id="firstName" [ngModel]="user?.firstName" ngModel #firstName="ngModel" required minlength="2" maxlength="20">
-          </div>
-          <div class="profile-last-name">
-            <label for="lastName">Last name</label>
-            <input type="text" name="lastName" id="lastName" [ngModel]="user?.lastName" ngModel #lastName="ngModel" required minlength="2" maxlength="20">
-          </div>
-          <div class="profile-email">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" [ngModel]="user?.email" ngModel #email="ngModel" required minlength="5">
-          </div>
-          <div class="form-btn">
-            <button class="cancel-btn" type="button" (click)="toggleEditMode()">Cancel</button>
-            <button class="save-btn" type="submit">Save</button>
-          </div>
-        </div>
-      </form>
+    </form>
     }
-      
-  
+
     <div class="animal-data">
       <div class="created-animals">
-        @if(user?.createdAnimals!.length > 0) { @for (animal of user?.createdAnimals; track
-        $index) {
-        <app-animal-card [animal]="animal" />
-        } }@else {
-          <span class="line">
-            Sorry, you dont have any created animals.
-          </span>
+        @if(user?.createdAnimals!.length > 0) {
+          <h3>Your created animals.</h3>
+          <p class="card-p">You've contributed to making a difference by adding animals in need. Below are the animals you've created. Feel free to manage or update their details as needed.</p>
+          <div class="card-c">
+           @for (animal of user?.createdAnimals; track $index) {
+              <app-animal-card [animal]="animal" />
+            } 
+          </div>
+        }@else {
+        <span class="line">You haven't created any animals yet. Start helping by adding animals for adoption or reporting lost pets!</span>
         }
       </div>
     </div>
     <div class="animal-data">
       <div class="liked-animals">
-        @if(user?.likedAnimals!.length > 0) { @for (animal of user?.likedAnimals; track
-        $index) {
+        @if(user?.likedAnimals!.length > 0) {
+          <h3>Your liked animals.</h3>
+          <p class="card-p">These are the animals you've shown interest in. Stay updated on their status and consider giving one of them a forever home!<p>
+          @for (animal of user?.likedAnimals; track $index) {
         <app-animal-card [animal]="animal" />
         } }@else {
-          <span class="line">
-            Sorry, you dont have any liked animals.
-          </span>
+        <span class="line">You haven’t liked any animals yet. Explore our listings and show some love to pets looking for a home!</span>
         }
       </div>
     </div>
   </div>
-  
 </section>

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { allAdopt, allLostAndFound, animalById, create, findAll, latestAdopt ,latestLostAndFound } from '../services/animalService.js';
+import { allAdopt, allLostAndFound, animalById, create, findAll, latestAdopt ,latestLostAndFound, edit } from '../services/animalService.js';
 
 const animalController = Router();
 
@@ -45,5 +45,16 @@ animalController.get('/:id/details', async (req, res) => {
   res.status(201).json(animal);
 })
 
+animalController.put('/:id/edit', async (req, res) => {
+  const id = req.params.id;
+  const animalData = req.body;
+
+  try {
+    await edit(id, animalData);
+    res.status(200).end()
+  } catch (error) {
+    res.status(401).json({message: err.message})
+  }
+})
 
 export default animalController;

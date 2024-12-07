@@ -1,0 +1,80 @@
+<section class="Edit-s">
+  <h2>Welcome to the Animal Editing Form!</h2>
+  <p>Here, you can update the details of your animal profile. Make sure all the information is accurate to increase the chances of finding a loving home or reuniting with its family. Be as descriptive as possible and upload a clear photo to attract potential adopters or finders.</p>
+  <form #editForm="ngForm" (ngSubmit)="editAnimal()">
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <select id="status" name="status" ngModel #status="ngModel" required>
+        <option value="Adopt">Adopt</option>
+        <option value="Lost">Lost</option>
+        <option value="Found">Found</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" name="name" ngModel #name="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type:</label>
+      <select id="type" name="type" ngModel #type="ngModel" required>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <select id="age" name="age" ngModel #age="ngModel" required>
+        <option value="Young">Young</option>
+        <option value="Adult">Adult</option>
+        <option value="Senior">Senior</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="size">Size:</label>
+      <select id="size" name="size" ngModel #size="ngModel" required>
+        <option value="Small">Small</option>
+        <option value="Medium">Medium</option>
+        <option value="Large">Large</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" ngModel #gender="ngModel" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="special-needs">Special Needs:</label>
+      <select id="special-needs" name="specialNeeds" ngModel #specialNeeds="ngModel" required>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" ngModel #location="ngModel" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="image">Image URL:</label>
+      <input type="text" id="image" name="image" ngModel #image="ngModel">
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4" ngModel #description="ngModel"></textarea>
+    </div>
+  
+    <button type="submit">Submit</button>
+  </form>
+  
+</section>
