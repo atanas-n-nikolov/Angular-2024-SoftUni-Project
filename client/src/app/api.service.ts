@@ -37,4 +37,12 @@ export class ApiService {
   getAnimal(id: string) {
     return this.http.get<Animals>(`/api/animals/${id}/details`)
   }
+
+  removeLike(animalId: string, userId: string) {
+    return this.http.delete(`/api/animals/${animalId}/like`, { body: {userId}})
+  }
+
+  addLike(animalId: string, userId: string) {
+    return this.http.post(`/api/animals/${animalId}/like`, {body: {userId}})
+  }
 }

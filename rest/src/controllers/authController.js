@@ -61,4 +61,12 @@ authController.post('/logout', (req, res) => {
   res.end();
 });
 
+authController.get('/profile/likes', isAuth, async (req, res) => {
+  const id = req.user?._id;
+  let user = await getInfo(id);
+
+  const likes = user.liked;
+  res.json(likes)
+});
+
 export default authController;

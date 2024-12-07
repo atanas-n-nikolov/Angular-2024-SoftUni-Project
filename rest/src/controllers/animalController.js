@@ -41,9 +41,9 @@ animalController.get('/lostandfound', async (req, res) => {
 
 animalController.get('/:id/details', async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   const animal = await animalById(id);
   res.status(201).json(animal);
 })
+
 
 export default animalController;

@@ -12,9 +12,7 @@ export interface Animals {
   image: string;           
   description: string;       
   owner: User;         
-  likes: {
-    user?: User
-  };       
+  likes: { user: User }[];       
   status: 'Adopt' | 'Lost' | 'Found';
   createdAt: string;         
   updatedAt: string;

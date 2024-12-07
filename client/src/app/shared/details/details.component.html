@@ -17,6 +17,14 @@
         <p>Special Needs: {{ animal.specialNeeds ? 'Yes' : 'No' }}</p>
         <p>Location: {{ animal.location }}</p>
         </div>
+        <button (click)="toggleLike()" class="like-btn">
+        @if(userLike) {
+          <img src="assets/img/like-yes.svg" alt="Like">
+        }@else {
+          <img src="assets/img/like-no.svg" alt="Disslike">
+        }
+      </button>
+      <p>{{animalLikes}}</p>
         <section class="animal-description">
           <h3>Description:</h3>
           <p>{{ animal.description }}</p>
