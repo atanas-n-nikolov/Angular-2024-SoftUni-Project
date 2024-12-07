@@ -33,13 +33,6 @@ export class DetailsComponent implements OnInit {
       this.apiService.getAnimal(this.animalId).subscribe((animal) => {
         this.animal = animal;
         this.animalLikes = animal.likes.length;
-
-        this.userService
-          .getProfile()
-          .subscribe((user) => (this.userId = user._id));
-        this.userLike = this.animal?.likes.some(
-          (like) => like.user?._id === this.userId
-        );
       });
     } else {
       console.log('No animal id');

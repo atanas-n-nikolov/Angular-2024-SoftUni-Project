@@ -57,7 +57,7 @@
   
     <div class="animal-data">
       <div class="created-animals">
-        @if(user?.createdAnimals) { @for (animal of user?.createdAnimals; track
+        @if(user?.createdAnimals!.length > 0) { @for (animal of user?.createdAnimals; track
         $index) {
         <app-animal-card [animal]="animal" />
         } }@else {
@@ -69,7 +69,7 @@
     </div>
     <div class="animal-data">
       <div class="liked-animals">
-        @if(user?.likedAnimals) { @for (animal of user?.likedAnimals; track
+        @if(user?.likedAnimals!.length > 0) { @for (animal of user?.likedAnimals; track
         $index) {
         <app-animal-card [animal]="animal" />
         } }@else {

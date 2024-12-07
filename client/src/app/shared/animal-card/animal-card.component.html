@@ -4,7 +4,7 @@
     <span class="animal-status">{{animal.status}}</span>
     <div class="animal-info">
       <div class="card">
-        <img src="assets/types/type-{{animal.type.toLocaleLowerCase()}}.svg" alt="type-dog" class="animal-type" />
+        <img src="assets/types/type-{{animal.type}}.svg" alt="type-dog" class="animal-type" />
         <p>{{ animal.name }}</p>
       </div>
       <a [routerLink]="['/animals', animal._id, 'details']" class="animal-a"
@@ -14,7 +14,7 @@
   }@else {
     <div class="animal-info">
       <div class="card">
-        <img src="assets/types/type-{{animal.type.toLocaleLowerCase()}}.svg" alt="type-dog" class="animal-type" />
+        <img src="assets/types/type-{{animal.type}}.svg" alt="type-dog" class="animal-type" />
         <p>{{ animal.name }}</p>
       </div>
       <a [routerLink]="['/animals', animal._id, 'details']" class="animal-a"

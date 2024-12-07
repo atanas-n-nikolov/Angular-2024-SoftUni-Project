@@ -17,7 +17,7 @@ export class LostFoundComponent implements OnInit{
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.lostAndFoundLatest().subscribe((lostAndFound) => {
+    this.apiService.getLostAndFound().subscribe((lostAndFound) => {
       this.lostAndFound = lostAndFound;
     })
   }

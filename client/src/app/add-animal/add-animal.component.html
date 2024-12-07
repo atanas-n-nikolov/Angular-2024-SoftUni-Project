@@ -1,72 +1,77 @@
   <section class="create-s">
     <h2>Welcome to the Animal Creation Form!</h2>
     <p>This form allows you to add an animal that is either available for adoption, has been found, or is lost. Please fill out the details of the animal and select the appropriate status. By providing clear information, you'll help us connect animals with loving homes or reunite lost pets with their families. Thank you for helping make a difference!</p>
-    <form>
+    <form #createForm="ngForm" (ngSubmit)="createAnimal()">
       <div class="form-group">
         <label for="status">Status:</label>
-        <select id="status" name="status" required>
-          <option value="adopt">Adopt</option>
-          <option value="lost">Lost</option>
-          <option value="found">Found</option>
+        <select id="status" name="status" ngModel #status="ngModel" required>
+          <option value="Adopt">Adopt</option>
+          <option value="Lost">Lost</option>
+          <option value="Found">Found</option>
         </select>
       </div>
     
       <div class="form-group">
+        <label for="name">Name:</label>
+        <input id="name" name="name" ngModel #name="ngModel">
+      </div>
+
+      <div class="form-group">
         <label for="type">Type:</label>
-        <select id="type" name="type" required>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="other">Other</option>
+        <select id="type" name="type" ngModel #type="ngModel" required>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Other">Other</option>
         </select>
       </div>
     
       <div class="form-group">
         <label for="age">Age:</label>
-        <select id="age" name="age" required>
-          <option value="young">Young</option>
-          <option value="adult">Adult</option>
-          <option value="senior">Senior</option>
+        <select id="age" name="age" ngModel #age="ngModel" required>
+          <option value="Young">Young</option>
+          <option value="Adult">Adult</option>
+          <option value="Senior">Senior</option>
         </select>
       </div>
     
       <div class="form-group">
         <label for="size">Size:</label>
-        <select id="size" name="size" required>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
+        <select id="size" name="size" ngModel #size="ngModel" required>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
         </select>
       </div>
     
       <div class="form-group">
         <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+        <select id="gender" name="gender" ngModel #gender="ngModel" required>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
         </select>
       </div>
     
       <div class="form-group">
         <label for="special-needs">Special Needs:</label>
-        <select id="special-needs" name="special-needs" required>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+        <select id="special-needs" name="specialNeeds" ngModel #specialNeeds="ngModel" required>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
         </select>
       </div>
     
       <div class="form-group">
         <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required>
+        <input type="text" id="location" name="location" ngModel #location="ngModel" required>
       </div>
     
       <div class="form-group">
         <label for="image">Image URL:</label>
-        <input type="text" id="image" name="image">
+        <input type="text" id="image" name="image" ngModel #image="ngModel">
       </div>
     
       <div class="form-group">
         <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" required></textarea>
+        <textarea id="description" name="description" rows="4" ngModel #description="ngModel"></textarea>
       </div>
     
       <button type="submit">Submit</button>

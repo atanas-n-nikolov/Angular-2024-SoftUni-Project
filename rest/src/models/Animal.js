@@ -4,8 +4,6 @@ import validator from 'validator';
 const animalSchema = new Schema({
   name: {
     type: String,
-    minLength: [2, 'Name should be at least 2 characters long!'],
-    required: [true, 'Name of animal is required!'],
   },
   type: {
     type: String,

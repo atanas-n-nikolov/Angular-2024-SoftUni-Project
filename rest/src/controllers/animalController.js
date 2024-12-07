@@ -11,7 +11,7 @@ animalController.get('/', async (req, res) => {
 animalController.post('/create', async (req, res) => {
   const animalData = req.body;
   try {
-    const createdAnimal = await create(animalData);
+    const createdAnimal = await create(req.user._id, animalData);
     res.status(201).json(createdAnimal);
   } catch (error) {
     console.error('Error creating animal:', error.message);

@@ -35,6 +35,8 @@ authController.get('/profile', isAuth, async (req, res) => {
 
   try {
     let user = await getInfo(id);
+    console.log(user);
+    
     res.json(user);
   } catch (err) {
     res.status(400).json({message: 'err'})

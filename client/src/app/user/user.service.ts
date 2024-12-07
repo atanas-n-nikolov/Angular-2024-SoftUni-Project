@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Subscription, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../types/user';
+import { Animals } from '../types/animal';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  private user$$ = new BehaviorSubject< User | null>(null);
+  private user$$ = new BehaviorSubject<User | null>(null);
   public user$ = this.user$$.asObservable();
   user: User | null = null;
 
@@ -15,37 +16,83 @@ export class UserService {
     return !!this.user;
   }
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.user$.subscribe((user) => {
       this.user = user;
     });
   }
 
-
-  register(firstName: string, lastName: string, email: string, password: string) {
-    return this.http.post<User>('/api/users/register', { firstName, lastName, email, password }).pipe(
-      tap((user) => this.user$$.next(user))
-    );
+  register(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ) {
+    return this.http
+      .post<User>('/api/users/register', {
+        firstName,
+        lastName,
+        email,
+        password,
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>('/api/users/login', { email, password }).pipe(tap((user) => this.user$$.next(user)));
-}
+    return this.http
+      .post<User>('/api/users/login', { email, password })
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
 
   logout() {
-    return this.http.post('/api/users/logout', {}).pipe(
-      tap(() => this.user$$.next(null))
-    );
+    return this.http
+      .post('/api/users/logout', {})
+      .pipe(tap(() => this.user$$.next(null)));
   }
 
   getProfile() {
-    return this.http.get<User>('/api/users/profile', { withCredentials: true }).pipe(tap((user) => this.user$$.next(user)));
-  };
-
-  updateProfile(firstName: string, lastName: string, email: string) {
-    return this.http.put<User>('/api/users/profile', {firstName, lastName, email}, { withCredentials: true }).pipe(tap((user) => {
-      this.user$$.next(user);
-    }))
+    return this.http
+      .get<User>('/api/users/profile', { withCredentials: true })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
+  updateProfile(firstName: string, lastName: string, email: string) {
+    return this.http
+      .put<User>(
+        '/api/users/profile',
+        { firstName, lastName, email },
+        { withCredentials: true }
+      )
+      .pipe(
+        tap((user) => {
+          this.user$$.next(user);
+        })
+      );
+  }
+
+  createAnimal(
+    status: string,
+    name: string,
+    type: string,
+    age: string,
+    size: string,
+    gender: string,
+    specialNeeds: string,
+    location: string,
+    image: string,
+    description: string
+  ) {
+    return this.http.post<Animals>(`/api/animals/create`, {
+      status,
+      name,
+      type,
+      age,
+      size,
+      gender,
+      specialNeeds,
+      location,
+      image,
+      description,
+    });
+  }
 }

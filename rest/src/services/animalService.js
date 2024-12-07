@@ -1,12 +1,18 @@
 import Animal from "../models/Animal.js";
+import User from "../models/User.js";
 
 export const findAll = async () => {
   const animals = await Animal.find();
   return animals;
 };
 
-export const create = async (animalData) => {
-  const createdAnimal = await Animal.create(animalData);
+export const create = async (userId, animalData) => {
+  const createdAnimal = await Animal.create({
+    owner: userId,
+    ...animalData
+  });
+
+  await User.findByIdAndUpdate(userId, {$push: {createdAnimals: createdAnimal._id}})
 
 return createdAnimal;
 }

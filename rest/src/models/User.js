@@ -26,11 +26,11 @@ const userSchema = new Schema({
     minLength: 4,
     required: [true, 'Password is required!']
   },
-  created: [{
+  createdAnimals: [{
     type: Types.ObjectId,
     ref: 'Animal'
   }],
-  liked: [{
+  likedAnimals: [{
     type: Types.ObjectId,
     ref: 'Animal'
   }]
