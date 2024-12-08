@@ -1,46 +1,66 @@
 <main class="details-container">
-  <header>
-    <h1>Welcome to the Animal Details Page</h1>
-    <p>Here you can find more information about this animal. Whether you're considering adopting, helping, or just curious, we're happy to provide all the details!</p>
-  </header>
   @if(animal) {
   <section class="animal-details">
     <article class="animal-info">
-      <div class="animal-details-left">
-        <h2>{{ animal.name }}</h2>
-        <div class="animal-data">
-        <p>Status: {{ animal.status }}</p>
-        <p>Type: {{ animal.type }}</p>
-        <p>Age: {{ animal.age }}</p>
-        <p>Size: {{ animal.size }}</p>
-        <p>Gender: {{ animal.gender }}</p>
-        <p>Special Needs: {{ animal.specialNeeds ? 'Yes' : 'No' }}</p>
-        <p>Location: {{ animal.location }}</p>
-        </div>
-        <button (click)="toggleLike()" class="like-btn">
-        @if(userLike) {
-          <img src="assets/img/like-yes.svg" alt="Like">
-        }@else {
-          <img src="assets/img/like-no.svg" alt="Disslike">
-        }
-      </button>
-      <p>{{animalLikes}}</p>
-      <button (click)="editAnimal(animal._id)">Edit</button>
-      <button type="button" (click)="deleteAnimal(animal._id)">Delete</button>
-        <section class="animal-description">
-          <h3>Description:</h3>
-          <p>{{ animal.description }}</p>
-        </section>
-      </div>
       <div class="animal-image-right">
         <img [src]="animal.image" alt="Image of {{ animal.name }}" />
       </div>
+      <div class="animal-form">
+        <div class="animal-container">
+          <div class="left-side">
+            <div class="animal-data">
+              <label for="name">Name: <span>{{ animal.name }}</span></label>
+            </div>
+            <div class="animal-data">
+              <label for="status">Status: <span>{{ animal.status }}</span></label>
+            </div>
+            <div class="animal-data">
+              <label for="type">Type: <span>{{ animal.type }}</span></label>
+            </div>
+            <div class="animal-data">
+              <label for="age" class="last">Age: <span>{{ animal.age }}</span></label>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="animal-data">
+              <label for="size">Size: <span>{{ animal.size }}</span></label>
+            </div>
+            <div class="animal-data">
+              <label for="gender">Gender: <span>{{ animal.gender }}</span></label>
+            </div>
+            <div class="animal-data">
+              <label for="specialNeeds">Special needs: <span>{{ animal.specialNeeds ? "Yes" : "No" }}</span></label>
+            </div>
+            <div class="animal-data">
+              <label class="last" for="location">Location: <span>{{ animal.location }}</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
+    <div class="animal-data">
+      <section class="animal-description">
+        <label class="description" for="description">Description:</label>
+        <p>{{ animal.description }}</p>
+      </section>
+    </div>
+    <div class="btn-wrapper">
+      <button (click)="toggleLike()" class="like-btn">
+        @if(userLike) {
+        <img src="assets/img/like-yes.svg" alt="Like" />
+        }@else {
+        <img src="assets/img/like-no.svg" alt="Disslike" />
+        }
+      </button>
+      <button
+        class="cancel-btn"
+        type="button"
+        (click)="deleteAnimal(animal._id)"
+      >
+        Delete
+      </button>
+      <button class="edit-btn" (click)="editAnimal(animal._id)">Edit</button>
+    </div>
   </section>
   }
-
 </main>
-
-<footer>
-  <p>Thank you for visiting! If you are interested in adopting or learning more, feel free to contact us!</p>
-</footer>
