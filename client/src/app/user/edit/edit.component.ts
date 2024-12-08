@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Animals } from '../../types/animal';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { FormsModule } from '@angular/forms';
 
@@ -12,9 +12,20 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './edit.component.css'
 })
 export class EditComponent implements OnInit {
-animal: any;
+animal: any = {
+  status: 'Adopt',
+  name: '',
+  type: 'Dog',
+  age: 'Young',
+  size: 'Small',
+  gender: 'Male',
+  specialNeeds: 'Yes',
+  location: '',
+  image: '',
+  description: '',
+};
 
-constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) {}
 
 ngOnInit(): void {
   const id = this.route.snapshot.paramMap.get('id');
@@ -27,7 +38,13 @@ ngOnInit(): void {
 
 editAnimal() {
   this.apiService.updateAnimal(this.animal._id, this.animal).subscribe(() => {
-    alert('Animal updated successfully!')
+    alert('Animal updated successfully!');
+    this.router.navigate([`/animals/${this.animal._id}/details`])
   })
+}
+
+cancelForm() {
+  const id = this.route.snapshot.paramMap.get('id');
+  this.router.navigate([`/animals/${id}/details`])
 }
 }

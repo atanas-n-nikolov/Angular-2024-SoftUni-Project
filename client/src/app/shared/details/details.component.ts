@@ -31,6 +31,10 @@ export class DetailsComponent implements OnInit {
 
   toggleLike(): void {}
 
+  deleteAnimal(id: string) {
+    
+  }
+
   ngOnInit(): void {
     this.animalId = this.route.snapshot.params['id'];
     if (this.animalId) {

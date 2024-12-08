@@ -4,7 +4,6 @@ import { UserService } from '../user.service';
 import { User } from '../../types/user';
 import { AnimalCardComponent } from '../../shared/animal-card/animal-card.component';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Animals } from '../../types/animal';
 
 @Component({
   selector: 'app-profile',

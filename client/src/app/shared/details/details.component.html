@@ -26,7 +26,7 @@
       </button>
       <p>{{animalLikes}}</p>
       <button (click)="editAnimal(animal._id)">Edit</button>
-      <button>Cancel</button>
+      <button type="button" (click)="deleteAnimal(animal._id)">Delete</button>
         <section class="animal-description">
           <h3>Description:</h3>
           <p>{{ animal.description }}</p>
