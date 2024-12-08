@@ -32,7 +32,19 @@ export class DetailsComponent implements OnInit {
   toggleLike(): void {}
 
   deleteAnimal(id: string) {
-    
+      const confirmed = confirm('Are you sure you want to delete this animal?');
+      if (confirmed) {
+        this.apiService.deleteAnimal(id).subscribe(
+          () => {
+            alert('Animal deleted successfully!');
+            this.router.navigate(['/home']);
+          },
+          (error) => {
+            console.error(error);
+            alert('Error deleting animal');
+          }
+        );
+      }
   }
 
   ngOnInit(): void {

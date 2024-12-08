@@ -42,4 +42,8 @@ export const animalById = async (id) => {
   return animal;
 };
 
-export const edit = async (id, data) => Animal.findByIdAndUpdate(id, data, {runValidators: true});
+export const editAnimal = async (id, data) => Animal.findByIdAndUpdate(id, data, {runValidators: true});
+
+export const deleteAnimal = async (id) => {
+  await Animal.findByIdAndDelete(id);
+} 

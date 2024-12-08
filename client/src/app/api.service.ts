@@ -49,4 +49,8 @@ export class ApiService {
   updateAnimal(id: string, data: any) {
     return this.http.put(`/api/animals/${id}/edit`, data, {withCredentials: true})
   }
+
+  deleteAnimal(id: string) {
+    return this.http.delete(`/api/animals/${id}/delete`, {});
+  };
 }
