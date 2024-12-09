@@ -13,7 +13,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit{
-  user: User | undefined;
+  user: User | null = null;
   isEditMode: boolean = false;
   animalLength: number = 0;
   likedLength: number = 0;
@@ -22,12 +22,25 @@ export class ProfileComponent implements OnInit{
   constructor(private route: ActivatedRoute, private userService: UserService) {};
 
   ngOnInit(): void {
-  this.userService.getProfile().subscribe((user) => {
-    this.user = user;
-    this.animalLength = user.createdAnimals!.length;
-    this.likedLength = user.likedAnimals!.length;
-  });
-}
+  this.userService.getUser().subscribe({
+    next: (user) => {
+      if (user) {
+        this.user = user;
+        this.animalLength = user.createdAnimals?.length || 0;
+        this.likedLength = user.likedAnimals?.length || 0;
+      } else {
+        this.user = null;
+        this.animalLength = 0;
+        this.likedLength = 0;
+      }
+    },
+    error: (err) => {
+
+    }
+  })
+
+  
+  }
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
@@ -45,7 +58,7 @@ export class ProfileComponent implements OnInit{
     } = this.form?.value;
 
     this.userService.updateProfile(firstName, lastName, email).subscribe(() => {
-      this.userService.getProfile().subscribe((user) => {
+      this.userService.getUser().subscribe((user) => {
         this.user = user;
         this.toggleEditMode();
       })

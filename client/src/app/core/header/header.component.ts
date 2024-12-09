@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { CommonModule } from '@angular/common';
+import { User } from '../../types/user';
 
 @Component({
   selector: 'app-header',
@@ -11,25 +12,26 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  userId: string | undefined;
-  isLoading: boolean = true;
+  user: User | null = null;
 
-
-  get isLoogedIn(): boolean {
-    return this.userService.isLogged;
-  };
-
-  get firstName(): string {
-    return this.userService.user?.firstName || '';
-  }
   constructor(private userService: UserService, private router: Router) {}
 
-  logout() {
-    this.userService.logout().subscribe(() => {
-      this.router.navigate(['/users/login']);
-    })
-  }
   ngOnInit(): void {
-    
+    this.userService.getUser().subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+        this.user = null;
+      }
+    });
+  }
+
+  get firstName(): string {
+    return this.user?.firstName || '';
+  }
+
+  logout() {
+    this.userService.logout().subscribe();
   }
 }
