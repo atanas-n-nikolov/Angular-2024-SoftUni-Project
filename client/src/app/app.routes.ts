@@ -11,18 +11,20 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { AddAnimalComponent } from './add-animal/add-animal.component';
 import { DetailsComponent } from './shared/details/details.component';
 import { EditComponent } from './user/edit/edit.component';
+import { AuthGuard } from './guards/auth.guard';
+import { guestGuard } from './guards/guest.guard';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'users/register', component: RegisterComponent},
-  {path: 'users/login', component: LoginComponent},
-  {path: 'users/profile', component: ProfileComponent},
+  {path: 'users/register', component: RegisterComponent, canActivate: [guestGuard]},
+  {path: 'users/login', component: LoginComponent, canActivate: [guestGuard]},
+  {path: 'users/profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'animals/adopt', component: AdoptComponent},
   {path: 'animals/lostandfound', component: LostFoundComponent},
-  {path: 'animals/create', component: AddAnimalComponent},
+  {path: 'animals/create', component: AddAnimalComponent, canActivate: [AuthGuard]},
   {path: 'animals/:id/details', component: DetailsComponent},
-  {path: 'animals/:id/edit', component: EditComponent},
+  {path: 'animals/:id/edit', component: EditComponent, canActivate: [AuthGuard]},
   {path: 'about', component: AboutUsComponent},
   {path: 'contact', component: ContactUsComponent},
   {path: 'donate', component: DonateComponent},

@@ -13,7 +13,7 @@
       <li><a routerLink="/contact">Contact Us</a></li>
       <li class="splitter">|</li>
       <li class="action-btn-sign-up">
-        @if(!firstName) {
+        @if(!isLogged) {
           <a routerLink="users/register">
             <img src="assets/img/user-icon.svg" alt="user" class="user-icon" /> Sign up
           </a> 

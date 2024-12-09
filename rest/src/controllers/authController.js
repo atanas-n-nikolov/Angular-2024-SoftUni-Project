@@ -39,7 +39,7 @@ authController.get('/profile', isAuth, async (req, res) => {
     
     res.json(user);
   } catch (err) {
-    res.status(400).json({message: 'err'})
+    res.status(401).json({message: 'no token'})
   }
 })
 

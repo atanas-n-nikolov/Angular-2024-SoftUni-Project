@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, catchError, of, Subscription, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../types/user';
 import { Animals } from '../types/animal';
@@ -11,17 +11,26 @@ import { Router } from '@angular/router';
 export class UserService {
   private user$$ = new BehaviorSubject<User | null>(null);
   public user$ = this.user$$.asObservable();
+
   user: User | null = null;
+  userSubscription: Subscription | null = null;
 
   get isLogged(): boolean {
     return !!this.user;
   }
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.user$.subscribe((user) => {
+  constructor(private http: HttpClient) {
+    const storeUser = localStorage.getItem('user')
+
+    if(storeUser) {
+      this.user = JSON.parse(storeUser);
+      this.user$$.next(this.user);
+    };
+
+    this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
-  }
+  };
 
   register(
     firstName: string,
@@ -42,57 +51,25 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return this.http
-      .post<User>('/api/users/login', { email, password })
-      .pipe(tap((user) => {
-        this.user$$.next(user);
-        localStorage.setItem('user', JSON.stringify(user));
-        this.router.navigate(['/home'])
-      }),
-    switchMap(() => this.getProfile()));
+    return this.http.post<User>('/api/users/login', {email, password}).pipe((tap((user) => {
+      localStorage.setItem('user', JSON.stringify(user));
+      this.user$$.next(user);
+    })))
   }
 
   logout() {
-    return this.http
-      .post('/api/users/logout', {})
-      .pipe(tap(() => {
-        this.user$$.next(null);
-        localStorage.removeItem('user');
-        this.router.navigate(['/home']);
-      }));
+    return this.http.post('/api/users/logout', {}).pipe(tap((user) => {
+      localStorage.removeItem('user');
+      this.user$$.next(null);
+    }))
   }
 
   getProfile() {
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
-
-    if(user) {
-      this.user$$.next(user);
-      return this.http.get<User>('/api/users/profile', {withCredentials: true}).pipe(tap((user) => this.user$$.next(user)), catchError((error) => {
-        if(error.status === 400) {
-          this.user$$.next(null)
-        }
-        throw(error)
-      }))
-    } else {
-      this.user$$.next(null);
-      return of(null);
-    }
+    return this.http.get<User>('/api/users/profile').pipe(tap((user) => {
+      this.user$$.next(user)
+    }))
   }
 
-  getUser(): Observable<User | null> {
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
-  if (user) {
-    this.user$$.next(user);
-    return of(user);
-  } else {
-    return this.http.get<User>('/api/users/profile', { withCredentials: true }).pipe(
-      tap((user) => {
-        localStorage.setItem('user', JSON.stringify(user));
-        this.user$$.next(user);
-      })
-    );
-  }
-  }
   updateProfile(firstName: string, lastName: string, email: string) {
     return this.http
       .put<User>(

@@ -22,24 +22,9 @@ export class ProfileComponent implements OnInit{
   constructor(private route: ActivatedRoute, private userService: UserService) {};
 
   ngOnInit(): void {
-  this.userService.getUser().subscribe({
-    next: (user) => {
-      if (user) {
-        this.user = user;
-        this.animalLength = user.createdAnimals?.length || 0;
-        this.likedLength = user.likedAnimals?.length || 0;
-      } else {
-        this.user = null;
-        this.animalLength = 0;
-        this.likedLength = 0;
-      }
-    },
-    error: (err) => {
-
-    }
-  })
-
-  
+    this.userService.getProfile().subscribe((user) => {
+      this.user = user;
+    })
   }
 
   toggleEditMode() {
@@ -58,7 +43,7 @@ export class ProfileComponent implements OnInit{
     } = this.form?.value;
 
     this.userService.updateProfile(firstName, lastName, email).subscribe(() => {
-      this.userService.getUser().subscribe((user) => {
+      this.userService.getProfile().subscribe((user) => {
         this.user = user;
         this.toggleEditMode();
       })

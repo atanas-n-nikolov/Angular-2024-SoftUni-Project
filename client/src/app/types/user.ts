@@ -8,10 +8,3 @@ export interface User {
   createdAnimals?: Animals[],
   likedAnimals?: Animals[],
 }
-
-export interface AuthUser {
-  _id: string,
-  firstName: string,
-  createdAnimals?: Animals[],
-  likedAnimals?: Animals[],
-}
