@@ -3,6 +3,7 @@ import { Animals } from '../../types/animal';
 import { ApiService } from '../../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../user/user.service';
+import { LikeService } from '../like.service';
 
 @Component({
   selector: 'app-details',
@@ -23,7 +24,8 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private likeService: LikeService
   ) {}
 
   editAnimal(id: string) {
@@ -32,25 +34,14 @@ export class DetailsComponent implements OnInit {
 
   toggleLike(): void {
 
-    if (!this.userId) {
+    if (!this.userId || !this.animalId) {
       return;
     }
 
-    if (!this.animalId) {
-      return;
-    }
-
-    if (this.canLike) {      
-      this.userService.addLike(this.animalId).subscribe(() => {
-        this.animalLikes++;
-        this.canLike = false;
-      });
-    } else {
-      this.userService.removeLike(this.animalId).subscribe(() => {
-        this.animalLikes--;
-        this.canLike = true;
-      });
-    }
+    this.likeService.toggleLike(this.animalId, this.canLike, this.userId).subscribe(() => {
+      this.animalLikes += this.canLike ? 1 : -1;
+      this.canLike = !this.canLike;
+    })
   }
 
   deleteAnimal(id: string) {
@@ -77,11 +68,11 @@ export class DetailsComponent implements OnInit {
     if (this.animalId) {
       this.apiService.getAnimal(this.animalId).subscribe((animal) => {
         this.animal = animal;
-        this.animalLikes = animal.likes.length;
+        this.animalLikes = this.likeService.getLikesCount(animal);          
         if(this.userId) {
           this.isOwner = this.animal.owner.toString() === this.userId;
           if(!this.isOwner) {
-            this.canLike = !this.animal.likes.some(id => id === this.userId)
+            this.canLike = !this.likeService.canLike(animal, this.userId);
           }
 
         }

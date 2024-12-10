@@ -145,11 +145,11 @@ export class UserService {
     });
   }
 
-  removeLike(animalId: string) {
-    return this.http.post(`/api/animals/${animalId}/unlike`, {});
+  removeLike(animalId: string, userId: string) {
+    return this.http.post(`/api/animals/${animalId}/unlike`, {userId});
   }
 
-  addLike(animalId: string) {
-    return this.http.post(`/api/animals/${animalId}/like`, {});
+  addLike(animalId: string, userId: string) {
+    return this.http.post(`/api/animals/${animalId}/like`, {userId});
   }
 }

@@ -43,10 +43,10 @@ const animalSchema = new Schema({
     minLength: 5,
     reqiured: true,
   },
-  owner: [{
+  owner: {
     type: Types.ObjectId,
     ref: 'User'
-  }],
+  },
   likes: [{
     type: Types.ObjectId,
     ref: 'User'

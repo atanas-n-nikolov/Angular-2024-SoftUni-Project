@@ -11,7 +11,17 @@
         >View<img src="assets/img/arrow.svg" alt="arrow" class="animal-arrow"
       /></a>
     </div>
-  }@else {
+  }
+    @if(animal.status === 'Adopt' && !isOwner && userId) {
+      <span class="animal-like">
+        @if(canLike) {
+          <img src="assets/img/like-no.svg" alt="Disslike" (click)="toggleLike(animal)" />
+        }@else {
+          <img src="assets/img/like-yes.svg" alt="Like" (click)="toggleLike(animal)"/>
+        }
+      </span>
+    }
+    
     <div class="animal-info">
       <div class="card">
         <img src="assets/types/type-{{animal.type}}.svg" alt="type-dog" class="animal-type" />
@@ -21,6 +31,5 @@
         >View<img src="assets/img/arrow.svg" alt="arrow" class="animal-arrow"
       /></a>
     </div>
-  }
   
 </div>
