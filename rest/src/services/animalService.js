@@ -46,4 +46,25 @@ export const editAnimal = async (id, data) => Animal.findByIdAndUpdate(id, data,
 
 export const deleteAnimal = async (id) => {
   await Animal.findByIdAndDelete(id);
-} 
+};
+
+export const likedAnimal = async (animalId, userId) => {
+  const animal = await Animal.findById(animalId);
+  animal.likes.push(userId);
+  animal.save();
+  const user = await User.findById(userId);
+  user.likedAnimals.push(animalId);
+  user.save();
+
+  return animal;
+}
+
+export const unlikeAnimal = async (animalId, userId) => {
+  const animal = await Animal.findById(animalId);
+  animal.likes = animal.likes.filter(id => id.toString() !== userId);
+  await animal.save()
+  const user = await User.findById(userId);
+  user.likedAnimals = user.likedAnimals.filter(id => id.toString() !== userId);
+  await user.save();
+  return animal;
+}

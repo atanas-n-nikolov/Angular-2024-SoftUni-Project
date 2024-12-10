@@ -8,3 +8,7 @@ export interface User {
   createdAnimals?: Animals[],
   likedAnimals?: Animals[],
 }
+
+export interface UserWithToken extends User{
+  token: string;
+}

@@ -9,30 +9,47 @@
         <div class="animal-container">
           <div class="left-side">
             <div class="animal-data">
-              <label for="name">Name: <span>{{ animal.name }}</span></label>
+              <label for="name"
+                >Name: <span>{{ animal.name }}</span></label
+              >
             </div>
             <div class="animal-data">
-              <label for="status">Status: <span>{{ animal.status }}</span></label>
+              <label for="status"
+                >Status: <span>{{ animal.status }}</span></label
+              >
             </div>
             <div class="animal-data">
-              <label for="type">Type: <span>{{ animal.type }}</span></label>
+              <label for="type"
+                >Type: <span>{{ animal.type }}</span></label
+              >
             </div>
             <div class="animal-data">
-              <label for="age" class="last">Age: <span>{{ animal.age }}</span></label>
+              <label for="age" class="last"
+                >Age: <span>{{ animal.age }}</span></label
+              >
             </div>
           </div>
           <div class="right-side">
             <div class="animal-data">
-              <label for="size">Size: <span>{{ animal.size }}</span></label>
+              <label for="size"
+                >Size: <span>{{ animal.size }}</span></label
+              >
             </div>
             <div class="animal-data">
-              <label for="gender">Gender: <span>{{ animal.gender }}</span></label>
+              <label for="gender"
+                >Gender: <span>{{ animal.gender }}</span></label
+              >
             </div>
             <div class="animal-data">
-              <label for="specialNeeds">Special needs: <span>{{ animal.specialNeeds ? "Yes" : "No" }}</span></label>
+              <label for="specialNeeds"
+                >Special needs:
+                <span>{{ animal.specialNeeds ? "Yes" : "No" }}</span></label
+              >
             </div>
             <div class="animal-data">
-              <label class="last" for="location">Location: <span>{{ animal.location }}</span></label>
+              <label class="last" for="location"
+                >Location: <span>{{ animal.location }}</span></label
+              >
             </div>
           </div>
         </div>
@@ -45,13 +62,20 @@
       </section>
     </div>
     <div class="btn-wrapper">
+      @if(isOwner) {
+      <button class="like-btn">
+        <img src="assets/img/like-yes.svg" alt="Like" />
+      </button>
+      }@else {
+
       <button (click)="toggleLike()" class="like-btn">
-        @if(userLike) {
+        @if(canLike) {
         <img src="assets/img/like-yes.svg" alt="Like" />
         }@else {
         <img src="assets/img/like-no.svg" alt="Disslike" />
         }
       </button>
+      }
       <button
         class="cancel-btn"
         type="button"

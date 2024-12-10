@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { allAdopt, allLostAndFound, animalById, create, findAll, latestAdopt ,latestLostAndFound, editAnimal, deleteAnimal } from '../services/animalService.js';
+import { allAdopt, allLostAndFound, animalById, create, findAll, latestAdopt ,latestLostAndFound, editAnimal, deleteAnimal, likedAnimal, unlikeAnimal } from '../services/animalService.js';
 
 const animalController = Router();
 
@@ -62,6 +62,24 @@ animalController.delete('/:id/delete', async (req, res) => {
   try {
     await deleteAnimal(id);
     res.status(200).end()
+  } catch (error) {
+    res.status(401).json({message: err.message})
+  }
+})
+
+animalController.post('/:id/like', async (req, res) => {
+  try {
+    const updateAnimal = await likedAnimal(req.params.id, req.user._id);
+    res.status(200).json(updateAnimal)
+  } catch (error) {
+    res.status(401).json({message: err.message})
+  }
+})
+
+animalController.post('/:id/unlike', async (req, res) => {
+  try {
+    const updateAnimal = await unlikeAnimal(req.params.id, req.user._id);
+    res.status(200).json(updateAnimal)
   } catch (error) {
     res.status(401).json({message: err.message})
   }

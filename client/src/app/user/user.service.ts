@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, of, Subscription, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../types/user';
+import { User, UserWithToken } from '../types/user';
 import { Animals } from '../types/animal';
 import { Router } from '@angular/router';
 
@@ -23,7 +23,9 @@ export class UserService {
     const storeUser = localStorage.getItem('user')
 
     if(storeUser) {
-      this.user = JSON.parse(storeUser);
+      const userWithToken: UserWithToken = JSON.parse(storeUser);
+      const {token, ...userWithoutToken} = userWithToken;
+      this.user = userWithoutToken;
       this.user$$.next(this.user);
     };
 
@@ -51,9 +53,10 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>('/api/users/login', {email, password}).pipe((tap((user) => {
-      localStorage.setItem('user', JSON.stringify(user));
-      this.user$$.next(user);
+    return this.http.post<UserWithToken>('/api/users/login', {email, password}, {withCredentials: true}).pipe((tap((UserWithToken) => {
+      localStorage.setItem('user', JSON.stringify(UserWithToken));
+      const { token, ...userWithoutToken } = UserWithToken;
+      this.user$$.next(userWithoutToken);
     })))
   }
 
@@ -108,5 +111,13 @@ export class UserService {
       image,
       description,
     });
+  }
+
+  removeLike(animalId: string, userId: string) {
+    return this.http.post(`/api/animals/${animalId}/like`, {animalId, userId})
+  }
+
+  addLike(animalId: string, userId: string) {
+    return this.http.post(`/api/animals/${animalId}/like`, {animalId, userId})
   }
 }
