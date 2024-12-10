@@ -40,13 +40,13 @@ export class DetailsComponent implements OnInit {
       return;
     }
 
-    if (this.canLike) {
-      this.userService.addLike(this.animalId, this.userId).subscribe(() => {
+    if (this.canLike) {      
+      this.userService.addLike(this.animalId).subscribe(() => {
         this.animalLikes++;
         this.canLike = false;
       });
     } else {
-      this.userService.removeLike(this.animalId, this.userId).subscribe(() => {
+      this.userService.removeLike(this.animalId).subscribe(() => {
         this.animalLikes--;
         this.canLike = true;
       });
@@ -72,11 +72,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.animalId = this.route.snapshot.params['id'];
     const user = JSON.parse(localStorage.getItem('user') || '{}')
-    this.userId = user._id;
-
-    if (user && user._id) {
-      this.userId = user._id;
-    }
+    this.userId = user?._id;
 
     if (this.animalId) {
       this.apiService.getAnimal(this.animalId).subscribe((animal) => {
@@ -84,7 +80,10 @@ export class DetailsComponent implements OnInit {
         this.animalLikes = animal.likes.length;
         if(this.userId) {
           this.isOwner = this.animal.owner.toString() === this.userId;
-          this.canLike = !this.isOwner && !this.animal.likes.some(id => id === this.userId)
+          if(!this.isOwner) {
+            this.canLike = !this.animal.likes.some(id => id === this.userId)
+          }
+
         }
         
       });

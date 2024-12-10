@@ -64,7 +64,7 @@ export const unlikeAnimal = async (animalId, userId) => {
   animal.likes = animal.likes.filter(id => id.toString() !== userId);
   await animal.save()
   const user = await User.findById(userId);
-  user.likedAnimals = user.likedAnimals.filter(id => id.toString() !== userId);
+  user.likedAnimals = user.likedAnimals.filter(id => id.toString() !== animalId);
   await user.save();
   return animal;
 }

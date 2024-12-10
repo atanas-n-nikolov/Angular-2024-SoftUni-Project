@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, of, Subscription, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  of,
+  Subscription,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { User, UserWithToken } from '../types/user';
+import { User } from '../types/user';
 import { Animals } from '../types/animal';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,19 +26,17 @@ export class UserService {
   }
 
   constructor(private http: HttpClient) {
-    const storeUser = localStorage.getItem('user')
+    const storeUser = localStorage.getItem('user');
 
-    if(storeUser) {
-      const userWithToken: UserWithToken = JSON.parse(storeUser);
-      const {token, ...userWithoutToken} = userWithToken;
-      this.user = userWithoutToken;
+    if (storeUser) {
+      this.user = JSON.parse(storeUser);
       this.user$$.next(this.user);
-    };
+    }
 
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
-  };
+  }
 
   register(
     firstName: string,
@@ -47,30 +51,51 @@ export class UserService {
         email,
         password,
       })
-      .pipe(tap(() => {
-        this.login(email, password).subscribe();
-      }));
+      .pipe(
+        tap(() => {
+          this.login(email, password).subscribe();
+        })
+      );
   }
 
   login(email: string, password: string) {
-    return this.http.post<UserWithToken>('/api/users/login', {email, password}, {withCredentials: true}).pipe((tap((UserWithToken) => {
-      localStorage.setItem('user', JSON.stringify(UserWithToken));
-      const { token, ...userWithoutToken } = UserWithToken;
-      this.user$$.next(userWithoutToken);
-    })))
+    return this.http
+      .post<User>(
+        '/api/users/login',
+        { email, password },
+        { withCredentials: true }
+      )
+      .pipe(
+        tap((user) => {
+          if (user) {
+            const UserData = {
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email,
+              _id: user._id
+            };
+            localStorage.setItem('user', JSON.stringify(UserData));
+            this.user$$.next(user);
+          }
+        })
+      );
   }
 
   logout() {
-    return this.http.post('/api/users/logout', {}).pipe(tap((user) => {
-      localStorage.removeItem('user');
-      this.user$$.next(null);
-    }))
+    return this.http.post('/api/users/logout', {}).pipe(
+      tap((user) => {
+        localStorage.removeItem('user');
+        this.user$$.next(null);
+      })
+    );
   }
 
   getProfile() {
-    return this.http.get<User>('/api/users/profile').pipe(tap((user) => {
-      this.user$$.next(user)
-    }))
+    return this.http.get<User>('/api/users/profile').pipe(
+      tap((user) => {
+        this.user$$.next(user);
+      })
+    );
   }
 
   updateProfile(firstName: string, lastName: string, email: string) {
@@ -82,7 +107,14 @@ export class UserService {
       )
       .pipe(
         tap((user) => {
+          const userData = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            _id: user._id
+          };
           this.user$$.next(user);
+          localStorage.setItem('user', JSON.stringify(userData));
         })
       );
   }
@@ -113,11 +145,11 @@ export class UserService {
     });
   }
 
-  removeLike(animalId: string, userId: string) {
-    return this.http.post(`/api/animals/${animalId}/like`, {animalId, userId})
+  removeLike(animalId: string) {
+    return this.http.post(`/api/animals/${animalId}/unlike`, {});
   }
 
-  addLike(animalId: string, userId: string) {
-    return this.http.post(`/api/animals/${animalId}/like`, {animalId, userId})
+  addLike(animalId: string) {
+    return this.http.post(`/api/animals/${animalId}/like`, {});
   }
 }

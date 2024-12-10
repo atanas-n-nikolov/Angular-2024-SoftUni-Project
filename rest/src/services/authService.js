@@ -22,8 +22,8 @@ export const login = async ({ email, password }) => {
     throw new Error('Invalid email or password!');
   };
 
-  const isValid = await bcrypt.compare(password, user.password);
-
+    const isValid = await bcrypt.compare(password, user.password);
+  
   if(!isValid) {
     throw new Error('Invalid email or password!');
   };
@@ -34,7 +34,8 @@ export const login = async ({ email, password }) => {
 };
 
 export const edit = async (userId, userData) => {
-  const user = await User.findByIdAndUpdate(userId, userData, {runValidators: true});
+  const user = await User.findByIdAndUpdate(userId, userData, {new: true, runValidators: true});
+  
   const payload = {
     _id: user._id,
     email: user.email,
