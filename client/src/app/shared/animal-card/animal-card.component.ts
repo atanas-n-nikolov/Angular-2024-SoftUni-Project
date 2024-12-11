@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Animals } from '../../types/animal';
 import { LikeService } from '../like.service';
@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AnimalCardComponent implements OnInit {
   @Input() animal!: Animals;
+  @Output() likeToggled = new EventEmitter<void>();
   userId: string = '';
   canLike: boolean = false;
   isOwner: boolean = false;
@@ -48,6 +49,8 @@ export class AnimalCardComponent implements OnInit {
         } else {
           this.animal.likes.push(this.userId);
         }
+
+        this.likeToggled.emit();
       });
   }
 }

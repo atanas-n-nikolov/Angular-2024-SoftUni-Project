@@ -62,19 +62,23 @@
       </section>
     </div>
     <div class="btn-wrapper">
-      @if(isOwner) {
-      <button class="like-btn">
-        <img src="assets/img/like-yes.svg" alt="Like" />
-      </button>
-      } @if(userId && !isOwner) {
-      <button (click)="toggleLike()" class="like-btn">
-        @if(canLike) {
-        <img src="assets/img/like-no.svg" alt="Disslike" />
-        }@else {
-        <img src="assets/img/like-yes.svg" alt="Like" />
-        }
-      </button>
-      } @if(isOwner) {
+      @if(animal.status === 'Adopt') {
+        @if(isOwner) {
+          <button class="like-btn">
+            <img src="assets/img/like-yes.svg" alt="Like" />
+          </button>
+          } @if(userId && !isOwner) {
+          <button (click)="toggleLike()" class="like-btn">
+            @if(canLike) {
+            <img src="assets/img/like-no.svg" alt="Disslike" />
+            }@else {
+            <img src="assets/img/like-yes.svg" alt="Like" />
+            }
+          </button>
+          }
+          <span>Likes: {{animal.likes.length}}</span>
+      }
+       @if(isOwner) {
 
       <button
         class="cancel-btn"

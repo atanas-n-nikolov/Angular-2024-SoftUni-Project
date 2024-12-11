@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Animals } from '../types/animal';
 import { ApiService } from '../api.service';
 import { SupportArticleComponent } from '../shared/support-article/support-article.component';
@@ -19,6 +19,10 @@ export class HomeComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    this.loadAnimals();
+  }
+
+  loadAnimals():void {
     this.apiService.getLatestAdopt().subscribe((forAdopt) => {
       this.forAdopt = forAdopt;
     });
@@ -26,4 +30,9 @@ export class HomeComponent implements OnInit {
       this.foundAndLost = foundAndLost;
     });
   }
+
+  onLikeToggled(): void {
+    this.loadAnimals();
+  }
+  
 }
