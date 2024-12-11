@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 import { Animals } from '../../types/animal';
 import { LikeService } from '../like.service';
 import { UserService } from '../../user/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-animal-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink ,CommonModule],
   templateUrl: './animal-card.component.html',
   styleUrl: './animal-card.component.css',
 })
@@ -16,6 +17,7 @@ export class AnimalCardComponent implements OnInit {
   userId: string = '';
   canLike: boolean = false;
   isOwner: boolean = false;
+  
 
   constructor(
     private likeService: LikeService,
@@ -34,7 +36,6 @@ export class AnimalCardComponent implements OnInit {
     if (this.isOwner || this.animal.status !== 'Adopt') return;
 
     const currentLikeState = this.likeService.canLike(this.animal, this.userId);
-
     this.likeService
       .toggleLike(this.animal._id, currentLikeState, this.userId)
       .subscribe(() => {

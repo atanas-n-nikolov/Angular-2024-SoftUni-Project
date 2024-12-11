@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
+import { NotificationService } from '../../shared/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,11 @@ import { UserService } from '../user.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private notificationService: NotificationService) {}
 
   login(form: NgForm) {
     if (form.invalid) {
-      console.error('Invalid Login Form!');
+      this.notificationService.showMessage('Invalid Login Form!', 'error');
       return;
     }
 

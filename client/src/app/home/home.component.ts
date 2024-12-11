@@ -3,11 +3,12 @@ import { Animals } from '../types/animal';
 import { ApiService } from '../api.service';
 import { SupportArticleComponent } from '../shared/support-article/support-article.component';
 import { AnimalCardComponent } from '../shared/animal-card/animal-card.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SupportArticleComponent, AnimalCardComponent],
+  imports: [SupportArticleComponent, AnimalCardComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

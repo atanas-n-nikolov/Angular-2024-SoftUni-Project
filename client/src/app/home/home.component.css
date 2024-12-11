@@ -148,3 +148,13 @@
   border: 1px dashed #a8aab2;
   pointer-events: none;
 }
+
+.gray-card {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.gray-card:hover {
+  filter: none;
+  /* transform: scale(1.05); */
+}

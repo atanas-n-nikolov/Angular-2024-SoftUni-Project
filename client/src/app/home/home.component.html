@@ -4,7 +4,7 @@
 
 <section class="animal-section-1">
   @for (animal of forAdopt; track $index) {
-  <app-animal-card [animal]="animal" />
+  <app-animal-card [animal]="animal" [ngClass]="'gray-card'" />
   }
 
   <a class="animal-card-blank" href="animals/adopt">
