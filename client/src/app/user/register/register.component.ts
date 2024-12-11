@@ -27,7 +27,9 @@ export class RegisterComponent {
     this.userService
       .register(firstName, lastName, email, password)
       .subscribe(() => {
-        this.router.navigate(['/home']);
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 100);
       });
   }
 }
