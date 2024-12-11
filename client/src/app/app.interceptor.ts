@@ -4,6 +4,7 @@ import { catchError, of, throwError } from 'rxjs';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './user/user.service';
+import { NotificationService } from './shared/notification.service';
 const { apiUrl } = environment;
 
 export const appInterceptor: HttpInterceptorFn = (req, next) => {
@@ -22,11 +23,17 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
       });
     }
 
-    const router = inject(Router)
+    const router = inject(Router);
+    const notificationService = inject(NotificationService);
+
     return next(req).pipe(catchError((err) => {
       if(err.status === 401) {
         router.navigate(['/users/login'])
       };
+
+      const errorMsg = err.error?.message || 'An unexpected error occurred.';
+      ;
+      notificationService.showMessage(errorMsg, 'error');
 
       return throwError(() => err);
     }))

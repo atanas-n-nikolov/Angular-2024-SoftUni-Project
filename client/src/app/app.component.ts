@@ -5,11 +5,12 @@ import { FooterComponent } from "./core/footer/footer.component";
 import { HomeComponent } from "./home/home.component";
 import { HttpClient } from '@angular/common/http';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { NotificationComponent } from './shared/notification/notification.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, AuthenticateComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, AuthenticateComponent, NotificationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -14,7 +14,8 @@ authController.post('/register', async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     const error = getErrorMsg(err);
-    res.status(401).json(error)
+    console.error('Error during registration:', err);
+    res.status(400).json({ message: 'Registration failed. ' + error });
   }
 });
 
@@ -24,10 +25,11 @@ authController.post('/register', async (req, res) => {
     try {
       const user = await login(userData);
       res.cookie(AUTH_COOKIE_NAME, user.accessToken, {httpOnly: true, sameSite: 'none', secure: true});
-      res.json(user);
+      res.status(200).json(user);
     } catch (err) {
       const error = getErrorMsg(err);
-      res.status(401).json(error)
+      console.error('Error during login:', err);
+      res.status(401).json({ message: 'Login failed. ' + error });
     };
   });
 
@@ -35,12 +37,21 @@ authController.get('/profile', isAuth, async (req, res) => {
   const id = req.user?._id;
 
   try {
+    if (!id) {
+      return res.status(400).json({ message: 'User ID not found in request' });
+    };
+
     let user = await getInfo(id);
-    
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    };
+
     res.json(user);
   } catch (err) {
-    res.status(401).json({message: 'no token'})
-  }
+    console.error('Error fetching user profile:', err);
+    res.status(500).json({ message: 'An error occurred while fetching user profile. Please try again later.' });
+  };
 })
 
 authController.put('/profile', isAuth, async (req, res) => {
@@ -53,7 +64,8 @@ authController.put('/profile', isAuth, async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     const error = getErrorMsg(err);
-    res.status(401).json(error)
+    console.error('Error updating profile:', err);
+    res.status(400).json({ message: 'Profile update failed. ' + error });
   }
 })
 

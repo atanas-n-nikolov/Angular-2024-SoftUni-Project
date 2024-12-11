@@ -72,7 +72,7 @@ export class UserService {
               firstName: user.firstName,
               lastName: user.lastName,
               email: user.email,
-              _id: user._id
+              _id: user._id,
             };
             localStorage.setItem('user', JSON.stringify(UserData));
             this.user$$.next(user);
@@ -111,7 +111,7 @@ export class UserService {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            _id: user._id
+            _id: user._id,
           };
           this.user$$.next(user);
           localStorage.setItem('user', JSON.stringify(userData));
@@ -146,10 +146,10 @@ export class UserService {
   }
 
   removeLike(animalId: string, userId: string) {
-    return this.http.post(`/api/animals/${animalId}/unlike`, {userId});
+    return this.http.post(`/api/animals/${animalId}/unlike`, { userId });
   }
 
   addLike(animalId: string, userId: string) {
-    return this.http.post(`/api/animals/${animalId}/like`, {userId});
+    return this.http.post(`/api/animals/${animalId}/like`, { userId });
   }
 }

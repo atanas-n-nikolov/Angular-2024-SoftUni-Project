@@ -72,7 +72,7 @@ export class DetailsComponent implements OnInit {
         if(this.userId) {
           this.isOwner = this.animal.owner.toString() === this.userId;
           if(!this.isOwner) {
-            this.canLike = !this.likeService.canLike(animal, this.userId);
+            this.canLike = this.likeService.canLike(animal, this.userId);
           }
 
         }

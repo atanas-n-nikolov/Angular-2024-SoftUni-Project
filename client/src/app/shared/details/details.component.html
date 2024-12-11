@@ -66,7 +66,8 @@
       <button class="like-btn">
         <img src="assets/img/like-yes.svg" alt="Like" />
       </button>
-      }@else {
+      }
+      @if(userId && !isOwner) {
       <button (click)="toggleLike()" class="like-btn">
         @if(canLike) {
           <img src="assets/img/like-no.svg" alt="Disslike" />
