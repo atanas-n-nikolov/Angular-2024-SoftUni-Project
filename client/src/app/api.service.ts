@@ -38,7 +38,7 @@ export class ApiService {
     return this.http.get<Animals>(`/api/animals/${id}/details`)
   }
 
-  updateAnimal(id: string, data: any) {
+  updateAnimal(id: string, data: Animals) {
     return this.http.put(`/api/animals/${id}/edit`, data, {withCredentials: true})
   }
 

@@ -1,5 +1,5 @@
 <div class="animal-card" >
-  <img class="animal-img" [src]="animal.image" alt="{{ animal.name }}" />
+  <img [routerLink]="['/animals', animal._id, 'details']" class="animal-img" [src]="animal.image" alt="{{ animal.name }}" />
   @if(animal.status === 'Lost' || animal.status === 'Found') {
   <span class="animal-status">{{ animal.status }}</span>
   <div class="animal-info">

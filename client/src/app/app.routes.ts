@@ -13,6 +13,7 @@ import { DetailsComponent } from './shared/details/details.component';
 import { EditComponent } from './user/edit/edit.component';
 import { AuthGuard } from './guards/auth.guard';
 import { guestGuard } from './guards/guest.guard';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -28,4 +29,5 @@ export const routes: Routes = [
   {path: 'about', component: AboutUsComponent},
   {path: 'contact', component: ContactUsComponent},
   {path: 'donate', component: DonateComponent},
+  {path: '**', component: NotFoundComponent},
 ];

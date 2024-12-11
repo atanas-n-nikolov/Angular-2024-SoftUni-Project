@@ -23,7 +23,7 @@ export class LikeService {
     animalId: string,
     canLike: boolean,
     userId: string
-  ): Observable<any> {
+  ): Observable<unknown> {
     const likeAction = canLike
       ? this.userService.addLike(animalId, userId)
       : this.userService.removeLike(animalId, userId);
@@ -39,7 +39,7 @@ export class LikeService {
     );
   }
 
-  getLikesCount(animal: any): number {
+  getLikesCount(animal: Animals): number {
     return animal.likes.length;
   }
 }
