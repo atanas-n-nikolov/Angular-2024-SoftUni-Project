@@ -25,7 +25,7 @@ export class AddAnimalComponent {
     if (this.form?.invalid) {
       this.notificationService.showMessage(
         'Creating form is invalid!',
-        'success'
+        'error'
       );
       return;
     }

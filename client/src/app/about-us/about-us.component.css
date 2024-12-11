@@ -1,0 +1,195 @@
+.about-us-container {
+  max-width: 1216px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.about-us-header {
+  margin-bottom: 40px;
+}
+
+.about-us-header h1 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 46px;
+  color: #3f3e3e;
+}
+
+.about-us-header p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+  margin-top: 16px;
+}
+
+/* Styling for the "What We Do" section */
+.what-we-do {
+  margin-bottom: 40px;
+}
+
+.what-we-do h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #3f3e3e;
+  margin-bottom: 16px;
+}
+
+.what-we-do p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+  margin-bottom: 16px;
+}
+
+/* Styling for the "Our Mission" section */
+.our-mission {
+  margin-bottom: 40px;
+}
+
+.our-mission h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #3f3e3e;
+  margin-bottom: 16px;
+}
+
+.our-mission p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+  margin-bottom: 16px;
+}
+
+/* Styling for the "Our Values" section */
+.our-values {
+  margin-bottom: 40px;
+}
+
+.our-values h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #3f3e3e;
+  margin-bottom: 16px;
+}
+
+.our-values ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.our-values li {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+  margin-bottom: 8px;
+}
+
+.our-values li strong {
+  font-weight: 600;
+  color: #ff7e56;
+}
+
+/* Styling for the "How You Can Help" section */
+.how-you-can-help {
+  margin-bottom: 40px;
+}
+
+.how-you-can-help h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #3f3e3e;
+  margin-bottom: 16px;
+}
+
+.how-you-can-help ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.how-you-can-help li {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+  margin-bottom: 8px;
+}
+
+.how-you-can-help li strong {
+  font-weight: 600;
+  color: #ff7e56;
+}
+
+/* Styling for the "Contact Us" section */
+.contact-us {
+  margin-bottom: 40px;
+}
+
+.contact-us h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #3f3e3e;
+  margin-bottom: 16px;
+}
+
+.contact-us p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-us-container {
+    padding: 0 15px;
+  }
+
+  .about-us-header h1 {
+    font-size: 28px;
+  }
+
+  .about-us-header p,
+  .what-we-do p,
+  .our-mission p,
+  .our-values li,
+  .how-you-can-help li,
+  .contact-us p {
+    font-size: 14px;
+  }
+
+  .what-we-do, .our-mission, .our-values, .how-you-can-help, .contact-us {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us-header h1 {
+    font-size: 24px;
+  }
+
+  .about-us-header p,
+  .what-we-do p,
+  .our-mission p,
+  .our-values li,
+  .how-you-can-help li,
+  .contact-us p {
+    font-size: 12px;
+  }
+
+  .what-we-do h2,
+  .our-mission h2,
+  .our-values h2,
+  .how-you-can-help h2,
+  .contact-us h2 {
+    font-size: 24px;
+  }
+}

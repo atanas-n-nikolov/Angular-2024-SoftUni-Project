@@ -1,4 +1,5 @@
-<section class="Edit-s">
+<main class="form-container">
+<section class="edit-s">
   <h2>Welcome to the Animal Editing Form!</h2>
   <p>
     Here, you can update the details of your animal profile. Make sure all the
@@ -7,149 +8,158 @@
     photo to attract potential adopters or finders.
   </p>
   <form #editForm="ngForm" (ngSubmit)="editAnimal()">
-    <div class="form-group">
-      <label for="status">Status:</label>
-      <select
-        id="status"
-        name="status"
-        [(ngModel)]="animal.status"
-        ngModel
-        #status="ngModel"
-        required
-      >
-        <option value="Adopt">Adopt</option>
-        <option value="Lost">Lost</option>
-        <option value="Found">Found</option>
-      </select>
+    <div class="form-wrapper">
+      <div class="form-side">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            id="name"
+            class="option-type"
+            name="name"
+            [(ngModel)]="animal.name"
+            ngModel
+            #name="ngModel"
+          />
+        </div>
+      </div>
+      <div class="form-column">
+        <div class="sideA">
+          <label for="status">Status:</label>
+          <select
+          class="option-type"
+            id="status"
+            name="status"
+            [(ngModel)]="animal.status"
+            ngModel
+            #status="ngModel"
+            required
+          >
+            <option value="Adopt">Adopt</option>
+            <option value="Lost">Lost</option>
+            <option value="Found">Found</option>
+          </select>
+    
+          <label for="type">Type:</label>
+          <select
+            id="type"
+            class="option-type"
+            name="type"
+            [(ngModel)]="animal.type"
+            ngModel
+            #type="ngModel"
+            required
+          >
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Other">Other</option>
+          </select>
+    
+          <label for="age">Age:</label>
+          <select
+            id="age"
+            class="option-type"
+            name="age"
+            [(ngModel)]="animal.age"
+            ngModel
+            #age="ngModel"
+            required
+          >
+            <option value="Young">Young</option>
+            <option value="Adult">Adult</option>
+            <option value="Senior">Senior</option>
+          </select>
+    
+          <label for="size">Size:</label>
+          <select
+            id="size"
+            class="option-type"
+            name="size"
+            [(ngModel)]="animal.size"
+            ngModel
+            #size="ngModel"
+            required
+          >
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+          </select>
+        </div>
+        <div class="sideA">
+          <label for="gender">Gender:</label>
+          <select
+            id="gender"
+            class="option-type"
+            name="gender"
+            [(ngModel)]="animal.gender"
+            ngModel
+            #gender="ngModel"
+            required
+          >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+    
+          <label for="special-needs">Special Needs:</label>
+          <select
+            id="special-needs"
+            class="option-type"
+            name="specialNeeds"
+            [(ngModel)]="animal.specialNeeds"
+            ngModel
+            #specialNeeds="ngModel"
+            required
+          >
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+    
+          <label for="location">Location:</label>
+          <input
+            type="text"
+            id="location"
+            class="option-type"
+            name="location"
+            [(ngModel)]="animal.location"
+            ngModel
+            #location="ngModel"
+            required
+          />
+    
+          <label for="image">Image URL:</label>
+          <input
+            type="text"
+            id="image"
+            class="option-type"
+            name="image"
+            [(ngModel)]="animal.image"
+            ngModel
+            #image="ngModel"
+          />
+        </div>
+          
     </div>
-
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input
-        id="name"
-        name="name"
-        [(ngModel)]="animal.name"
-        ngModel
-        #name="ngModel"
-      />
+      <div class="form-side">
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea
+            id="description"
+            class="option-type"
+            name="description"
+            rows="4"
+            [(ngModel)]="animal.description"
+            ngModel
+            #description="ngModel"
+          ></textarea>
+        </div>
+      </div>
     </div>
-
-    <div class="form-group">
-      <label for="type">Type:</label>
-      <select
-        id="type"
-        name="type"
-        [(ngModel)]="animal.type"
-        ngModel
-        #type="ngModel"
-        required
-      >
-        <option value="Dog">Dog</option>
-        <option value="Cat">Cat</option>
-        <option value="Other">Other</option>
-      </select>
+    <div class="button-wrapper">
+      <button class="btn-cancel" (click)="cancelForm()" type="button" >Cancel</button>
+      <button type="submit">Submit</button>
     </div>
-
-    <div class="form-group">
-      <label for="age">Age:</label>
-      <select
-        id="age"
-        name="age"
-        [(ngModel)]="animal.age"
-        ngModel
-        #age="ngModel"
-        required
-      >
-        <option value="Young">Young</option>
-        <option value="Adult">Adult</option>
-        <option value="Senior">Senior</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="size">Size:</label>
-      <select
-        id="size"
-        name="size"
-        [(ngModel)]="animal.size"
-        ngModel
-        #size="ngModel"
-        required
-      >
-        <option value="Small">Small</option>
-        <option value="Medium">Medium</option>
-        <option value="Large">Large</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="gender">Gender:</label>
-      <select
-        id="gender"
-        name="gender"
-        [(ngModel)]="animal.gender"
-        ngModel
-        #gender="ngModel"
-        required
-      >
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="special-needs">Special Needs:</label>
-      <select
-        id="special-needs"
-        name="specialNeeds"
-        [(ngModel)]="animal.specialNeeds"
-        ngModel
-        #specialNeeds="ngModel"
-        required
-      >
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="location">Location:</label>
-      <input
-        type="text"
-        id="location"
-        name="location"
-        [(ngModel)]="animal.location"
-        ngModel
-        #location="ngModel"
-        required
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="image">Image URL:</label>
-      <input
-        type="text"
-        id="image"
-        name="image"
-        [(ngModel)]="animal.image"
-        ngModel
-        #image="ngModel"
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea
-        id="description"
-        name="description"
-        rows="4"
-        [(ngModel)]="animal.description"
-        ngModel
-        #description="ngModel"
-      ></textarea>
-    </div>
-
-    <button type="submit">Submit</button>
-    <button type="button" (click)="cancelForm()">Cancel</button>
+    
   </form>
 </section>
+</main>
+
+

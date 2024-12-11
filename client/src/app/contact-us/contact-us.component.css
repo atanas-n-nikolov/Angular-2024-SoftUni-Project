@@ -1,0 +1,100 @@
+/* Contact Us container */
+.contact-us-container {
+  max-width: 1216px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Styling for the header */
+.contact-us-header {
+  margin-bottom: 40px;
+}
+
+.contact-us-header h1 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 46px;
+  color: #3f3e3e;
+}
+
+.contact-us-header p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+  margin-top: 16px;
+}
+
+/* Contact Information */
+.contact-us-details {
+  margin-bottom: 40px;
+}
+
+.contact-info {
+  margin-bottom: 24px;
+}
+
+.contact-info h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #3f3e3e;
+  margin-bottom: 12px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #3f3e3e;
+  margin-bottom: 8px;
+}
+
+/* Urgent Help Section */
+.urgent-help {
+  margin-top: 40px;
+}
+
+.urgent-help h2 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #3f3e3e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-us-container {
+    padding: 0 15px;
+  }
+
+  .contact-us-header h1 {
+    font-size: 28px;
+  }
+
+  .contact-us-header p,
+  .contact-info p,
+  .urgent-help h2 {
+    font-size: 14px;
+  }
+
+  .contact-info h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-us-header h1 {
+    font-size: 24px;
+  }
+
+  .contact-us-header p,
+  .contact-info p,
+  .urgent-help h2 {
+    font-size: 12px;
+  }
+
+  .contact-info h2 {
+    font-size: 20px;
+  }
+}

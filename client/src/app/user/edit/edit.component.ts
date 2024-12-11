@@ -3,6 +3,7 @@ import { Animals } from '../../types/animal';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { FormsModule } from '@angular/forms';
+import { NotificationService } from '../../shared/notification.service';
 
 @Component({
   selector: 'app-edit',
@@ -28,7 +29,8 @@ export class EditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class EditComponent implements OnInit {
 
   editAnimal() {
     this.apiService.updateAnimal(this.animal._id, this.animal).subscribe(() => {
-      alert('Animal updated successfully!');
+      this.notificationService.showMessage('Animal updated successfully!', 'success')
       this.router.navigate([`/animals/${this.animal._id}/details`]);
     });
   }

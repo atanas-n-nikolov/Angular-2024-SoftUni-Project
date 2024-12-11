@@ -47,7 +47,6 @@ export class LostFoundComponent implements OnInit {
         (!this.filterCriteria.location || animal.location === this.filterCriteria.location)
       );
     });
-    console.log("Filtered animals:", this.filteredAnimals);
   }
 
   clearFilter(): void {
