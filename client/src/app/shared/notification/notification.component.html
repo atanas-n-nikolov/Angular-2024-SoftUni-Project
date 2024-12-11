@@ -1,5 +1,6 @@
 @if(message) {
-  <div class="notification" [ngClass]="messageType">
-    <span class="message-content">{{message}}</span>
-  </div>
+<div class="notification" [ngClass]="getClasses()"  >
+  <span class="message-content">{{ message }}</span>
+  <button class="close-btn" (click)="clearMessage()">×</button>
+</div>
 }

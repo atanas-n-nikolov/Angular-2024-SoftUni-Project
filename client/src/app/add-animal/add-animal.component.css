@@ -1,12 +1,12 @@
 .create-s {
-    display: flex;
-    flex-direction: column;
-    max-width: 1216px;
-    margin: 40px auto;
-    margin-bottom: 114px;
-    padding: 0 60px;
-    gap: 32px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-width: 1216px;
+  margin: 40px auto;
+  margin-bottom: 114px;
+  padding: 0 60px;
+  gap: 32px;
+  box-sizing: border-box;
 }
 
 section {
@@ -26,7 +26,7 @@ section p {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: #3F3E3E;
+  color: #3f3e3e;
 }
 
 form {
@@ -37,7 +37,7 @@ form {
   margin: 0 auto;
   max-width: 600px;
   max-height: 698px;
-  box-shadow: 0px 2px 21px 0px #7680A126;
+  box-shadow: 0px 2px 21px 0px #7680a126;
   display: flex;
   flex-direction: column;
 }

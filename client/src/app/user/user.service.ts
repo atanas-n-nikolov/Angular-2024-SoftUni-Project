@@ -8,7 +8,7 @@ import {
   tap,
 } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../types/user';
+import { User, UserFromStorage } from '../types/user';
 import { Animals } from '../types/animal';
 
 @Injectable({
@@ -145,11 +145,25 @@ export class UserService {
     });
   }
 
+  getUserFromLocalStorage(): UserFromStorage | null {
+    return JSON.parse(localStorage.getItem('user') || '{}');
+  }
+
   removeLike(animalId: string, userId: string) {
     return this.http.post(`/api/animals/${animalId}/unlike`, { userId });
   }
 
   addLike(animalId: string, userId: string) {
     return this.http.post(`/api/animals/${animalId}/like`, { userId });
+  }
+
+  canLike(animal: Animals, userId: string): boolean {
+    return animal.status === 'Adopt' && !animal.likes.includes(userId);
+  }
+
+  isOwner(animal: Animals, userId: string): boolean {
+    const ownerId =
+      typeof animal.owner === 'string' ? animal.owner : animal.owner?._id;
+    return ownerId === userId;
   }
 }

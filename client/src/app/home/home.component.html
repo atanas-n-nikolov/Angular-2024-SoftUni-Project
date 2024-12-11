@@ -4,7 +4,7 @@
 
 <section class="animal-section-1">
   @for (animal of forAdopt; track $index) {
-  <app-animal-card [animal]="animal"/>
+  <app-animal-card [animal]="animal" />
   }
 
   <a class="animal-card-blank" href="animals/adopt">
@@ -57,11 +57,15 @@
   </p>
   <div class="animal-cards-container">
     @for (animal of foundAndLost; track $index) {
-      <app-animal-card [animal]="animal"/>
+    <app-animal-card [animal]="animal" />
     }
     <a class="animal-card-blank" href="animals/lostandfound">
       <div class="animal-blank">
-        <img src="assets/img/pet-friendly-grey.svg" alt="" class="animal-grey" />
+        <img
+          src="assets/img/pet-friendly-grey.svg"
+          alt=""
+          class="animal-grey"
+        />
         <p>
           <span class="line">View</span>
           <span class="line">all animals</span>
@@ -70,4 +74,4 @@
     </a>
   </div>
 </section>
-<app-support-article/>
+<app-support-article />

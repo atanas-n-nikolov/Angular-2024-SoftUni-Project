@@ -8,22 +8,22 @@ import { UserService } from '../../user/user.service';
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   constructor(private userService: UserService, private router: Router) {}
 
-  get isLogged():boolean {
+  get isLogged(): boolean {
     return this.userService.isLogged;
-  };
+  }
 
-  get firstName():string | null {
+  get firstName(): string | null {
     return this.userService.user?.firstName || null;
-  };
+  }
 
   logout() {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['users/login']);
-    })
+    });
   }
 }

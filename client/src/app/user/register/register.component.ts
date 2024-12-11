@@ -8,7 +8,7 @@ import { UserService } from '../user.service';
   standalone: true,
   imports: [RouterLink, FormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   @ViewChild('registerForm') form: NgForm | undefined;
@@ -16,21 +16,18 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   registerSubmitHandler() {
-    if(this.form?.invalid) {
+    if (this.form?.invalid) {
       console.log('This form is invalid!');
       return;
-    };
+    }
 
-    const {
-      firstName,
-      lastName,
-      email,
-      password,
-      rePassword
-    } = this.form?.value;
-      
-      this.userService.register(firstName, lastName, email, password).subscribe(() => {
-        this.router.navigate(['/home'])
-      })
+    const { firstName, lastName, email, password, rePassword } =
+      this.form?.value;
+
+    this.userService
+      .register(firstName, lastName, email, password)
+      .subscribe(() => {
+        this.router.navigate(['/home']);
+      });
   }
 }

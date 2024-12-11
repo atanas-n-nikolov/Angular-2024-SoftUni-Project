@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SupportArticleComponent } from "../shared/support-article/support-article.component";
+import { SupportArticleComponent } from '../shared/support-article/support-article.component';
 import { AnimalCardComponent } from '../shared/animal-card/animal-card.component';
 import { Animals } from '../types/animal';
 import { ApiService } from '../api.service';
@@ -9,9 +9,9 @@ import { ApiService } from '../api.service';
   standalone: true,
   imports: [SupportArticleComponent, AnimalCardComponent],
   templateUrl: './lost-found.component.html',
-  styleUrl: './lost-found.component.css'
+  styleUrl: './lost-found.component.css',
 })
-export class LostFoundComponent implements OnInit{
+export class LostFoundComponent implements OnInit {
   lostAndFound: Animals[] = [];
 
   constructor(private apiService: ApiService) {}
@@ -19,6 +19,6 @@ export class LostFoundComponent implements OnInit{
   ngOnInit(): void {
     this.apiService.getLostAndFound().subscribe((lostAndFound) => {
       this.lostAndFound = lostAndFound;
-    })
+    });
   }
 }

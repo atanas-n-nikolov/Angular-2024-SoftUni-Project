@@ -10,14 +10,14 @@
 }
 
 .register-s {
-  border-top: 4px solid #FF7E56;
+  border-top: 4px solid #ff7e56;
   border-radius: 12px;
   padding: 32px;
   gap: 20px;
   width: 100%;
   max-width: 600px;
   max-height: 698px;
-  box-shadow: 0px 2px 21px 0px #7680A126;
+  box-shadow: 0px 2px 21px 0px #7680a126;
 }
 
 section {
@@ -37,7 +37,7 @@ section p {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: #3F3E3E;
+  color: #3f3e3e;
 }
 
 form {
@@ -48,12 +48,12 @@ form {
 .name-container {
   display: flex;
   justify-content: space-between;
-  gap: 16px; 
+  gap: 16px;
 }
 
 p {
   margin: 0;
-  color: #3F3E3E;
+  color: #3f3e3e;
 }
 
 label {
@@ -76,7 +76,7 @@ input {
 button {
   padding: 8px 24px;
   height: 50px;
-  background-color: #FF7E56;
+  background-color: #ff7e56;
   color: white;
   gap: 8px;
   border: none;
@@ -92,7 +92,7 @@ button:hover {
 
 a {
   text-decoration: none;
-  color: #FF7E56;
+  color: #ff7e56;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -114,7 +114,8 @@ a {
   gap: 4px;
 }
 
-#firstName, #lastName {
+#firstName,
+#lastName {
   padding: 8px 16px;
   gap: 10px;
 }

@@ -66,18 +66,15 @@
       <button class="like-btn">
         <img src="assets/img/like-yes.svg" alt="Like" />
       </button>
-      }
-      @if(userId && !isOwner) {
+      } @if(userId && !isOwner) {
       <button (click)="toggleLike()" class="like-btn">
         @if(canLike) {
-          <img src="assets/img/like-no.svg" alt="Disslike" />
+        <img src="assets/img/like-no.svg" alt="Disslike" />
         }@else {
-          <img src="assets/img/like-yes.svg" alt="Like" />
+        <img src="assets/img/like-yes.svg" alt="Like" />
         }
       </button>
-      }
-
-      @if(isOwner) {
+      } @if(isOwner) {
 
       <button
         class="cancel-btn"
@@ -87,8 +84,7 @@
         Delete
       </button>
       <button class="edit-btn" (click)="editAnimal(animal._id)">Edit</button>
-    }
-
+      }
     </div>
   </section>
   }

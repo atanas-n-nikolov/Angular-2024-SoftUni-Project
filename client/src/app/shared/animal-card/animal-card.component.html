@@ -1,35 +1,49 @@
 <div class="animal-card">
   <img class="animal-img" [src]="animal.image" alt="{{ animal.name }}" />
   @if(animal.status === 'Lost' || animal.status === 'Found') {
-    <span class="animal-status">{{animal.status}}</span>
-    <div class="animal-info">
-      <div class="card">
-        <img src="assets/types/type-{{animal.type}}.svg" alt="type-dog" class="animal-type" />
-        <p>{{ animal.name }}</p>
-      </div>
-      <a [routerLink]="['/animals', animal._id, 'details']" class="animal-a"
-        >View<img src="assets/img/arrow.svg" alt="arrow" class="animal-arrow"
-      /></a>
+  <span class="animal-status">{{ animal.status }}</span>
+  <div class="animal-info">
+    <div class="card">
+      <img
+        src="assets/types/type-{{ animal.type }}.svg"
+        alt="type-dog"
+        class="animal-type"
+      />
+      <p>{{ animal.name }}</p>
     </div>
-  }
-    @if(animal.status === 'Adopt' && !isOwner && userId) {
-      <span class="animal-like">
-        @if(canLike) {
-          <img src="assets/img/like-no.svg" alt="Disslike" (click)="toggleLike(animal)" />
-        }@else {
-          <img src="assets/img/like-yes.svg" alt="Like" (click)="toggleLike(animal)"/>
-        }
-      </span>
+    <a [routerLink]="['/animals', animal._id, 'details']" class="animal-a"
+      >View<img src="assets/img/arrow.svg" alt="arrow" class="animal-arrow"
+    /></a>
+  </div>
+  } @if(animal.status === 'Adopt' && !isOwner && userId) {
+  <span class="animal-like">
+    @if(canLike) {
+    <img
+      src="assets/img/like-no.svg"
+      alt="Disslike"
+      (click)="toggleLike(animal)"
+    />
+    }@else {
+    <img
+      src="assets/img/like-yes.svg"
+      alt="Like"
+      (click)="toggleLike(animal)"
+    />
     }
-    
-    <div class="animal-info">
-      <div class="card">
-        <img src="assets/types/type-{{animal.type}}.svg" alt="type-dog" class="animal-type" />
-        <p>{{ animal.name }}</p>
-      </div>
-      <a [routerLink]="['/animals', animal._id, 'details']" class="animal-a"
-        >View<img src="assets/img/arrow.svg" alt="arrow" class="animal-arrow"
-      /></a>
+  </span>
+  }
+
+  <div class="animal-info">
+    <div class="card">
+      <img
+        src="assets/types/type-{{ animal.type }}.svg"
+        alt="type-dog"
+        class="animal-type"
+      />
+      <p>{{ animal.name }}</p>
     </div>
-  
+    <a [routerLink]="['/animals', animal._id, 'details']" class="animal-a"
+      >View<img src="assets/img/arrow.svg" alt="arrow" class="animal-arrow"
+    /></a>
+  </div>
 </div>

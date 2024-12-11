@@ -1,25 +1,29 @@
 <section class="adopt-section">
   <div class="adopt-header">
     <h3>Adopt</h3>
-    <p>Give a second chance to an animal in need! In our adoption section, you’ll find pets looking for loving families. Every animal deserves a home where they are loved and feel safe.</p>
+    <p>
+      Give a second chance to an animal in need! In our adoption section, you’ll
+      find pets looking for loving families. Every animal deserves a home where
+      they are loved and feel safe.
+    </p>
   </div>
-  
+
   <div class="filter-container">
     <div class="filter-wrapper">
       <div class="filter-icon">
         <img src="assets/img/filter-alt.svg" alt="Filter Icon" />
       </div>
-      
+
       <div class="filter-options">
         <div class="filter-option">
-          <select id="animal-type" class="option-type" >
+          <select id="animal-type" class="option-type">
             <option value="" disabled selected hidden>Type of Animal</option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
             <option value="other">Other</option>
           </select>
         </div>
-        
+
         <div class="filter-option">
           <select id="age" class="option-type">
             <option value="" disabled selected hidden>Age</option>
@@ -28,7 +32,7 @@
             <option value="senior">Senior</option>
           </select>
         </div>
-        
+
         <div class="filter-option">
           <select id="size" class="option-type">
             <option value="" disabled selected hidden>Size</option>
@@ -37,7 +41,7 @@
             <option value="large">Large</option>
           </select>
         </div>
-        
+
         <div class="filter-option">
           <select id="gender" class="option-type">
             <option value="" disabled selected hidden>Gender</option>
@@ -45,7 +49,7 @@
             <option value="female">Female</option>
           </select>
         </div>
-        
+
         <div class="filter-option">
           <select id="special-needs" class="option-type">
             <option value="" disabled selected hidden>Special Needs</option>
@@ -53,7 +57,7 @@
             <option value="no">No</option>
           </select>
         </div>
-        
+
         <div class="filter-option">
           <select id="location" class="option-type">
             <option value="" disabled selected hidden>Location</option>
@@ -62,18 +66,15 @@
             <option value="location3">Location 3</option>
           </select>
         </div>
-        
       </div>
     </div>
     <button class="clear-filter">Clear Filter</button>
-    
   </div>
   <div class="adopt-animals">
     @for (animal of forAdopt; track $index) {
-      <app-animal-card [animal]="animal"/>
+    <app-animal-card [animal]="animal" />
     }
   </div>
-  
 </section>
 
-<app-support-article/>
+<app-support-article />
