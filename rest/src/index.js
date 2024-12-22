@@ -2,6 +2,7 @@ import express from 'express'
 import routes from './routes.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import 'dotenv/config'
 import cookieParser from 'cookie-parser';
 import { authMiddleware } from './middlewares/authMiddleware.js';
 
@@ -16,7 +17,7 @@ app.use(authMiddleware);
 app.use(routes);
 
 try {
-  mongoose.connect('mongodb://localhost:27017', { dbName: 'Shelter'});
+  mongoose.connect(process.env.MONGO_URI, { dbName: 'Shelter'});  
   console.log('DB Connected!')
 } catch (error) {
   console.log('Cannot connect to DB!');
