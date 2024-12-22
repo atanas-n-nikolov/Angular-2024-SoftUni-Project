@@ -70,8 +70,12 @@ authController.put('/profile', isAuth, async (req, res) => {
 })
 
 authController.post('/logout', (req, res) => {
-  res.clearCookie(AUTH_COOKIE_NAME);
-  res.end();
+  res.clearCookie(AUTH_COOKIE_NAME, {
+    httpOnly: true,
+    sameSite: 'none',
+    secure: true,
+  });
+  res.status(200).json({ message: 'Logged out successfully.'});
 });
 
 export default authController;
