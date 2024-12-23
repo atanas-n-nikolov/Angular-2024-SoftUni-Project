@@ -12,7 +12,7 @@ import { authMiddleware } from "./middlewares/authMiddleware.js";
 
 const app = express();
 const corsOptions = {
-  origin: "https://animal-adoption-client.onrender.com",
+  origin: ["http://localhost:4200", "https://animal-adoption-client.onrender.com"],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };

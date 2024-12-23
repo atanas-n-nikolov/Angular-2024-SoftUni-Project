@@ -57,7 +57,8 @@ Start the server in development mode:</br>
 _npm run dev_</br>
 or:</br>
 _npm start_</br>
-The server will start on http://localhost:3000.
+The server will start on http://localhost:3000.</br>
+**Note:** If running locally, ensure you have a MongoDB service running, either locally or via MongoDB Atlas, to connect the database.
 
 
 **Front-End (Angular)**
@@ -68,3 +69,12 @@ _npm install_</br>
 Run the Angular application:</br>
 _ng serve --open_</br>
 The app will be available at http://localhost:4200.
+
+
+### Deployment
+
+https://animal-adoption-client.onrender.com
+
+Back-End: Hosted on Render with MongoDB Atlas for the database.</br>
+Front-End: Hosted on Render.</br>
+The client and server are deployed separately, with proper CORS configuration to allow communication between them.
